@@ -1,0 +1,11 @@
+# Exact definitions, units, source series and comparability are pending source audit.
+indicators:
+  - real_industry_value_added
+  - employment
+  - industrial_production
+  - inflation
+  - interest_rates
+  - credit
+  - exchange_rates
+  - energy_prices
+  - trade

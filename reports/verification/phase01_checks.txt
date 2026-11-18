@@ -1,0 +1,56 @@
+Phase 01 local verification
+UTC: 2026-11-02T13:24:36.743433+00:00
+Tests and snapshot replay use a fresh noneditable Python 3.12 environment.
+Installed with: uv sync --locked --no-editable --offline (cached dependencies).
+Initial shared-temp/cache permissions were avoided using an isolated pytest directory.
+
+python.exe -m pytest -q -p no:cacheprovider --basetemp C:\Users\mehak\AppData\Local\Temp\industry-resilience-final-tests-vnh8r7p0\cases
+exit code: 0
+...............................................                          [100%]
+47 passed in 9.30s
+
+
+ruff.exe check .
+exit code: 0
+All checks passed!
+
+
+ruff.exe format --check .
+exit code: 0
+42 files already formatted
+
+
+mypy.exe 
+exit code: 0
+Success: no issues found in 16 source files
+
+
+python.exe -m industry_resilience.cli verify-world-bank-gdp data/metadata/acquisitions/world_bank_gdp/20261102T130604691809Z.json
+exit code: 0
+{
+  "row_count": 132,
+  "dataset_last_updated": "2026-10-08",
+  "countries": {
+    "IND": {
+      "rows": 66,
+      "non_null": 65,
+      "null": 1,
+      "first_observed_period": "1961",
+      "last_observed_period": "2025",
+      "missing_periods": [
+        "1960"
+      ]
+    },
+    "USA": {
+      "rows": 66,
+      "non_null": 65,
+      "null": 1,
+      "first_observed_period": "1961",
+      "last_observed_period": "2025",
+      "missing_periods": [
+        "1960"
+      ]
+    }
+  }
+}
+

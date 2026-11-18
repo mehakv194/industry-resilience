@@ -1,0 +1,31 @@
+# Manual acquisition and unresolved access
+
+The only automated adapter in Phase 01 is World Bank WDI GDP growth, with JSON and CSV-export retrieval. Other sources below are discovery contracts, not implemented adapters. Do not guess an API, defeat an access denial, or substitute a third-party mirror.
+
+## Procedure for every manually selected file
+
+1. Open the official URL in the registry and select the exact publication, table, series, frequency and vintage described below. If those choices are unavailable, stop and record the mismatch.
+2. Download the original file using the publisher's own download link. Retain its original filename and format. Do not edit or resave it in a spreadsheet application.
+3. Store it under `data/raw/<project_source_id>/<sha256>/<original_filename>`. Compute its SHA-256 with Python's `hashlib` or PowerShell `Get-FileHash -Algorithm SHA256`. Never replace a previous file.
+4. Create a new receipt in `data/metadata/manual/` recording source ID, landing URL, actual file URL, UTC retrieval time, filename/path, byte length, SHA-256, table and series IDs, units, price basis, base year, frequency, period bounds, publication/revision status, industry definitions, and reuse terms. Unknown values must be explicit. This is a manual record, not a claim that automated validation occurred.
+5. Inspect at least three values against the published table, including a shock-period value if the extract covers one. Keep acquisition, structural-validation and comparability statuses separate. Do not load these files into analytical outputs until the appropriate checks exist.
+
+## Specific sources
+
+- **MoSPI 2022–23-base GDP/GVA:** open the exact 27 February 2026 PDF linked in [the registry](DATA_SOURCE_REGISTRY.md#mospi_gva_2022_23). Save the PDF itself. Locate Part A, Statement 3A for annual constant-price GVA; retain its units, footnotes and advance/revised labels. Part B and subsequent releases are distinct vintages. A PDF parser has not been implemented or validated.
+- **MoSPI 2011–12-base NAS:** open the exact 2025 release linked in the registry, then follow its official NAS statement links. Select an industry GVA table at constant prices and record its real table identifier. Selection of the detailed table is still outstanding; do not infer one from a different publication.
+- **IIP:** open [official catalogue 148](https://microdata.gov.in/NADA/index.php/catalog/148), read the metadata and follow its official data/release access links. Select the 2011–12-base series and retain mining, manufacturing and electricity definitions. Confirm the exact monthly history file and latest period before importing. This archived base must remain separate from any newer base.
+- **PLFS:** open the [official PLFS collection](https://microdata.gov.in/nada/index.php/catalog/PLFS?page=1). Select an annual survey vintage and its official report/industry tables. Record the survey reference period, status concept, age/geographic universe and industry classification. An exact historical industry table has not yet been selected. Respect any registration or microdata terms; use published aggregates when access is not available.
+- **BEA:** open [GDP by Industry](https://www.bea.gov/itable/gdp-by-industry), follow **Interactive Data Tables**, choose the verified table title **Real Value Added by Industry**, and select annual frequency, industries and years. Use the application's download/export control and retain the displayed units and reference year. Record the actual numeric TableID from the export rather than assuming it. Export **Value Added by Industry as a Percentage of GDP** separately for shares. Review [BEA's table guide](https://www.bea.gov/resources/guide-interactive-gdp-industry-accounts-tables). This procedure is a manual route; no export file was verified in this phase.
+- **BLS:** open the [manufacturing series report](https://data.bls.gov/timeseries/CES3000000001), confirm `CES3000000001`, seasonally adjusted all-employees counts in thousands, select years, and use the displayed **Download** controls. Save the unmodified download and its footnotes. The [API specification](https://www.bls.gov/developers/api_signature_v2.htm) is available, but its limits and parameters require a dedicated adapter before automation.
+- **Federal Reserve:** open the [G.17](https://www.federalreserve.gov/releases/g17/), [H.15](https://www.federalreserve.gov/releases/h15/) or [H.8](https://www.federalreserve.gov/releases/h8/) official page. Select **Data Download** or the official text files and accompanying documentation. Choose the exact production, rate or credit series and record its code and adjustment status. Current download routes are undergoing a November 2026 transition, so no stable file URL is assumed here.
+- **EIA:** open the [Brent daily history](https://www.eia.gov/dnav/pet/hist/RBRTED.htm) or [Henry Hub monthly history](https://www.eia.gov/dnav/ng/hist/rngwhhdm.htm), choose the required frequency and click **Download Data (XLS File)**. For the inspected Henry Hub monthly view, the link is [RNGWHHDm.xls](https://www.eia.gov/dnav/ng/hist_xls/RNGWHHDm.xls). Retain USD/barrel versus USD/million Btu units. An XLS parser and authenticity check are not implemented.
+- **Other WDI indicators:** use each verified indicator page in the registry and choose **CSV**, **XML**, or **EXCEL**. Confirm country-specific non-null years and definitions before accepting the file. The implemented CLI intentionally supports GDP growth only.
+
+## Blocked discovery
+
+**RBI DBIE:** [the portal](https://data.rbi.org.in/) exposed no readable series metadata in this audit. A person must select the intended report and export using the interactive portal, then record the exact table/series ID and download route. There is no verified API or precise historical export procedure to automate yet.
+
+**OEA WPI:** [the official portal](https://eaindustry.nic.in/) timed out during this audit. Its download route, selected base-year release and reuse terms remain unverified. Retry official access later; do not treat the registry entry as an approved dataset.
+
+These unresolved steps are recorded as limitations, rather than invented identifiers or successful downloads.

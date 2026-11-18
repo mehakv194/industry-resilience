@@ -1,0 +1,7 @@
+countries:
+  - code: IND
+    name: India
+    calendar: fiscal_year
+  - code: USA
+    name: United States
+    calendar: calendar_year

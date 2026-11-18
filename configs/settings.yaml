@@ -1,0 +1,5 @@
+project:
+  name: IndustryResilience
+  primary_country: IND
+  benchmark_country: USA
+  warehouse_path: data/industry_resilience.duckdb

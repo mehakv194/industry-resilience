@@ -1,0 +1,57 @@
+# Windows are provisional; country and frequency-specific choices require source audit.
+crises:
+  - id: global_financial_crisis
+    name: Global financial crisis
+    category: financial
+    onset_date: 2008-09-01
+    observation_end: 2009-12-31
+    baseline_window: [2007-01-01, 2007-12-31]
+    analysis_window: [2008-01-01, 2012-12-31]
+    follow_up_window: [2010-01-01, 2012-12-31]
+    comparison_period: [2007-01-01, 2007-12-31]
+    status: completed
+    date_rationale: Provisional annual research windows, subject to source and method review.
+  - id: taper_tantrum
+    name: Taper tantrum
+    category: monetary
+    onset_date: 2013-05-01
+    observation_end: 2013-12-31
+    baseline_window: [2012-01-01, 2012-12-31]
+    analysis_window: [2013-01-01, 2015-12-31]
+    follow_up_window: [2014-01-01, 2015-12-31]
+    comparison_period: [2012-01-01, 2012-12-31]
+    status: completed
+    date_rationale: Provisional annual research windows, subject to source and method review.
+  - id: russia_ukraine
+    name: Russia–Ukraine war-related disruptions
+    category: energy_trade
+    onset_date: 2022-02-24
+    observation_end: 2022-12-31
+    baseline_window: [2021-01-01, 2021-12-31]
+    analysis_window: [2022-01-01, 2024-12-31]
+    follow_up_window: [2023-01-01, 2024-12-31]
+    comparison_period: [2021-01-01, 2021-12-31]
+    status: completed_period
+    date_rationale: Provisional annual research windows; disruptions need not have ended in 2022.
+  - id: middle_east_energy
+    name: 2026 Middle East conflict and energy shock
+    category: energy_geopolitical
+    onset_date: null
+    observation_end: null
+    baseline_window: null
+    analysis_window: null
+    follow_up_window: null
+    comparison_period: null
+    status: ongoing
+    date_rationale: Exact onset and windows require source audit; recovery cannot yet be claimed.
+  - id: covid_19
+    name: COVID-19
+    category: pandemic
+    onset_date: null
+    observation_end: null
+    baseline_window: null
+    analysis_window: null
+    follow_up_window: null
+    comparison_period: null
+    status: optional
+    date_rationale: Define if the optional secondary comparison is selected.

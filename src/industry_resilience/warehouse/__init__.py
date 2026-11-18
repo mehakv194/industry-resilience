@@ -1,0 +1,1 @@
+"""Embedded analytical warehouse utilities."""

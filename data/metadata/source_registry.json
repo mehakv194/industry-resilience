@@ -1,0 +1,690 @@
+{
+  "schema_version": 1,
+  "audited_on": "2026-11-02",
+  "scope_note": "Internal source_id values are project keys, not publisher-assigned table IDs. Null metadata means unverified or not applicable, as explained in coverage/limitations. Documentation verification never implies acquisition or comparability approval.",
+  "sources": [
+    {
+      "source_id": "WB_WDI_GDP_GROWTH",
+      "dataset_name": "GDP growth (annual %)",
+      "publisher": "World Bank — World Development Indicators",
+      "exact_source_url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "publication_or_table_id": "NY.GDP.MKTP.KD.ZG; WDI source 2",
+      "original_units": "annual percent change",
+      "frequency": "annual; original year labels retained",
+      "countries": [
+        "IND",
+        "USA"
+      ],
+      "industry_coverage": "whole economy, not industry output",
+      "earliest_available_period": "1961",
+      "latest_available_period": "2025",
+      "coverage_evidence": "65 non-null values and one null (1960) per country, from the saved JSON response.",
+      "price_basis": "real GDP growth; exact upstream definition retained in acquisition receipt",
+      "base_year": "Metadata describes underlying constant-price series with reference year 2015; country vintage history remains unverified.",
+      "formats": [
+        "JSON",
+        "CSV in ZIP"
+      ],
+      "acquisition_mechanism": "Implemented CLI: python -m industry_resilience.cli acquire-world-bank-gdp",
+      "release_or_vintage": "WDI dataset lastupdated: 2026-10-08; not a per-observation vintage",
+      "access_conditions": "No API key; three official API requests successfully acquired.",
+      "reuse_conditions": "CC BY 4.0 as stated on indicator page; attribute World Bank and upstream providers.",
+      "verification_status": "acquired_and_validated",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "Country period boundaries and national revisions need separate review.",
+        "WDI can contain staff estimates; reported observations are not necessarily final releases.",
+        "CSV agreement checks the same upstream source, not independent statistical truth."
+      ],
+      "evidence_urls": [
+        "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+        "https://datahelpdesk.worldbank.org/knowledgebase/articles/898581-api-basic-call-structures"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md",
+      "download_urls": [
+        "https://api.worldbank.org/v2/country/IND;USA/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&source=2",
+        "https://api.worldbank.org/v2/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+        "https://api.worldbank.org/v2/en/indicator/NY.GDP.MKTP.KD.ZG?downloadformat=csv"
+      ],
+      "acquisition_receipt": "data/metadata/acquisitions/world_bank_gdp/20261102T130604691809Z.json"
+    },
+    {
+      "source_id": "MOSPI_GVA_2022_23",
+      "dataset_name": "New GDP/GVA series release, 27 February 2026",
+      "publisher": "MoSPI / National Statistics Office",
+      "exact_source_url": "https://www.mospi.gov.in/uploads/latestReleases/latest_release_1772189865181_f040336d-bc57-4aed-b80f-586d9ccb279e_Press_Note_on_New_Series_of_GDP_Estimates_with_Base_Year_2022-23_27022026.pdf",
+      "publication_or_table_id": "Part A, Statement 3A (annual GVA at constant prices); select revised Part B tables separately",
+      "original_units": "INR crore (levels); percent (growth)",
+      "frequency": "annual fiscal year; quarterly tables also in release",
+      "countries": [
+        "IND"
+      ],
+      "industry_coverage": "broad economic activities; classification reconciliation pending",
+      "earliest_available_period": "FY2022-23",
+      "latest_available_period": "FY2025-26",
+      "coverage_evidence": "Bounds refer to this release, not the complete history; advance/revised status varies by year.",
+      "price_basis": "constant prices for Statement 3A; current-price tables must remain separate",
+      "base_year": "2022-23",
+      "formats": [
+        "PDF"
+      ],
+      "acquisition_mechanism": "Manual original PDF download; no automated parser implemented",
+      "release_or_vintage": "27 February 2026, includes advance and revised estimates; not asserted latest release",
+      "access_conditions": "Official release text inspected via web; file not acquired locally.",
+      "reuse_conditions": "Not yet verified; do not redistribute selected data before review.",
+      "verification_status": "documentation_verified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "Does not supply a validated 2008/2013 back-series.",
+        "Do not splice with 2011-12-base series."
+      ],
+      "evidence_urls": [
+        "https://www.mospi.gov.in/uploads/latestReleases/latest_release_1772189865181_f040336d-bc57-4aed-b80f-586d9ccb279e_Press_Note_on_New_Series_of_GDP_Estimates_with_Base_Year_2022-23_27022026.pdf",
+        "https://mospi.gov.in/faq"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    },
+    {
+      "source_id": "MOSPI_NAS_2011_12_ARCHIVE",
+      "dataset_name": "National Accounts Statistics 2025 release (archived base)",
+      "publisher": "MoSPI / National Statistics Office",
+      "exact_source_url": "https://www.mospi.gov.in/sites/default/files/press_release/Press%20Release%20on%20National%20Accounts%20Statistics%20Publication%20-%202025.pdf",
+      "publication_or_table_id": "National Accounts Statistics 2025 release; detailed GVA table selection pending",
+      "original_units": null,
+      "frequency": "annual fiscal year",
+      "countries": [
+        "IND"
+      ],
+      "industry_coverage": null,
+      "earliest_available_period": "FY2011-12",
+      "latest_available_period": "FY2023-24",
+      "coverage_evidence": "Release describes history from FY2011-12 and revisions through FY2023-24; exact GVA extract not acquired.",
+      "price_basis": "constant and current tables, to be selected separately",
+      "base_year": "2011-12",
+      "formats": [
+        "PDF"
+      ],
+      "acquisition_mechanism": "Manual release and linked NAS statement download",
+      "release_or_vintage": "2025 publication, historical vintage",
+      "access_conditions": "Public source page; selected download not tested.",
+      "reuse_conditions": "Not yet verified; do not redistribute selected data before review.",
+      "verification_status": "documentation_verified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "Table identifier, units and available sector rows still need file audit.",
+        "2008 coverage requires an official older/back-series."
+      ],
+      "evidence_urls": [
+        "https://www.mospi.gov.in/sites/default/files/press_release/Press%20Release%20on%20National%20Accounts%20Statistics%20Publication%20-%202025.pdf"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    },
+    {
+      "source_id": "MOSPI_IIP_2011_12",
+      "dataset_name": "Index of Industrial Production, base 2011-12",
+      "publisher": "MoSPI / NSO",
+      "exact_source_url": "https://microdata.gov.in/NADA/index.php/catalog/148",
+      "publication_or_table_id": "Official catalogue 148: IIP with base year 2011-12",
+      "original_units": "index, 2011-12 = 100",
+      "frequency": "monthly",
+      "countries": [
+        "IND"
+      ],
+      "industry_coverage": "mining, manufacturing, electricity; NIC 2008",
+      "earliest_available_period": "FY2011-12",
+      "latest_available_period": null,
+      "coverage_evidence": "Official metadata describes history from FY2011-12; latest selected observation not checked.",
+      "price_basis": "volume index, not value added",
+      "base_year": "2011-12",
+      "formats": [
+        "catalogue metadata",
+        "release tables"
+      ],
+      "acquisition_mechanism": "Manual catalogue/release export; audit exact file before parsing",
+      "release_or_vintage": null,
+      "access_conditions": "Public source page; selected download not tested.",
+      "reuse_conditions": "Not yet verified; do not redistribute selected data before review.",
+      "verification_status": "documentation_verified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "Rebased vintages and weights cannot be silently linked.",
+        "Not a service-sector output measure."
+      ],
+      "evidence_urls": [
+        "https://microdata.gov.in/NADA/index.php/catalog/148",
+        "https://nmds.mospi.gov.in/"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    },
+    {
+      "source_id": "MOSPI_PLFS",
+      "dataset_name": "Periodic Labour Force Survey",
+      "publisher": "MoSPI / NSO",
+      "exact_source_url": "https://microdata.gov.in/nada/index.php/catalog/PLFS?page=1",
+      "publication_or_table_id": "PLFS collection; specific historical industry table not selected",
+      "original_units": null,
+      "frequency": "annual; quarterly/monthly designs differ",
+      "countries": [
+        "IND"
+      ],
+      "industry_coverage": "household employment by industry where published; not establishment payroll counts",
+      "earliest_available_period": "2017-18",
+      "latest_available_period": null,
+      "coverage_evidence": "Survey programme begins 2017-18; selected industry-series bounds unverified.",
+      "price_basis": null,
+      "base_year": null,
+      "formats": [
+        "report tables",
+        "unit records subject to access terms"
+      ],
+      "acquisition_mechanism": "Manual survey report selection",
+      "release_or_vintage": null,
+      "access_conditions": "Public source page; selected download not tested.",
+      "reuse_conditions": "Not yet verified; do not redistribute selected data before review.",
+      "verification_status": "documentation_verified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "Cannot fill 2008/2013 industry employment gaps with PLFS.",
+        "2025 redesign and survey status definitions require review."
+      ],
+      "evidence_urls": [
+        "https://microdata.gov.in/nada/index.php/catalog/PLFS?page=1",
+        "https://dsbb.imf.org/sdds/dqaf-base/country/IND/category/UEM00"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    },
+    {
+      "source_id": "RBI_DBIE_FINANCIAL",
+      "dataset_name": "DBIE macro-financial series discovery",
+      "publisher": "Reserve Bank of India",
+      "exact_source_url": "https://data.rbi.org.in/",
+      "publication_or_table_id": null,
+      "original_units": null,
+      "frequency": "depends on selected series",
+      "countries": [
+        "IND"
+      ],
+      "industry_coverage": null,
+      "earliest_available_period": null,
+      "latest_available_period": null,
+      "coverage_evidence": "Selected-country coverage has not been audited.",
+      "price_basis": null,
+      "base_year": null,
+      "formats": [
+        "interactive portal"
+      ],
+      "acquisition_mechanism": "Interactive DBIE export; no verified public API assumed",
+      "release_or_vintage": null,
+      "access_conditions": "Public source page; selected download not tested.",
+      "reuse_conditions": "Not yet verified; do not redistribute selected data before review.",
+      "verification_status": "candidate_unverified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "JavaScript portal returned no readable series metadata in this audit.",
+        "Repo/policy rates, bank credit growth and exchange-rate table IDs, units and history remain unverified."
+      ],
+      "evidence_urls": [
+        "https://data.rbi.org.in/"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    },
+    {
+      "source_id": "OEA_WPI",
+      "dataset_name": "Wholesale Price Index discovery",
+      "publisher": "Office of Economic Adviser, DPIIT",
+      "exact_source_url": "https://eaindustry.nic.in/",
+      "publication_or_table_id": null,
+      "original_units": null,
+      "frequency": null,
+      "countries": [
+        "IND"
+      ],
+      "industry_coverage": null,
+      "earliest_available_period": null,
+      "latest_available_period": null,
+      "coverage_evidence": "Selected-country coverage has not been audited.",
+      "price_basis": null,
+      "base_year": null,
+      "formats": [],
+      "acquisition_mechanism": "Manual official release/export after accessibility and metadata review",
+      "release_or_vintage": null,
+      "access_conditions": "Public source page; selected download not tested.",
+      "reuse_conditions": "Not yet verified; do not redistribute selected data before review.",
+      "verification_status": "candidate_unverified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "Official portal timed out during this audit; no file or coverage is approved.",
+        "WPI measures wholesale prices and is not IIP or CPI."
+      ],
+      "evidence_urls": [
+        "https://eaindustry.nic.in/"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    },
+    {
+      "source_id": "BEA_INDUSTRY_VALUE_ADDED",
+      "dataset_name": "GDP by Industry: real value added and industry shares",
+      "publisher": "US Bureau of Economic Analysis",
+      "exact_source_url": "https://www.bea.gov/itable/gdp-by-industry",
+      "publication_or_table_id": "Real Value Added by Industry; Value Added by Industry as a Percentage of GDP (verified titles; numeric API TableIDs not selected)",
+      "original_units": "chained dollars (scale/reference year to verify in export); percent for current-dollar GDP shares",
+      "frequency": "annual and quarterly, select explicitly",
+      "countries": [
+        "USA"
+      ],
+      "industry_coverage": "BEA industry groups; concordance required",
+      "earliest_available_period": null,
+      "latest_available_period": null,
+      "coverage_evidence": "Selected-country coverage has not been audited.",
+      "price_basis": "real chained measures; GDP shares are current-dollar measures",
+      "base_year": null,
+      "formats": [
+        "interactive tables",
+        "download export"
+      ],
+      "acquisition_mechanism": "Manual iTable export; API requires separate key/parameter audit",
+      "release_or_vintage": "Landing page shows 30 September 2026 release; no selected data extract acquired",
+      "access_conditions": "Public source page; selected download not tested.",
+      "reuse_conditions": "Not yet verified; do not redistribute selected data before review.",
+      "verification_status": "documentation_verified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "Chained-dollar components generally are not additive.",
+        "Do not confuse industry GDP share with real growth or growth contribution.",
+        "Historical quarterly corrections noted in 2026 update; preserve vintage."
+      ],
+      "evidence_urls": [
+        "https://www.bea.gov/itable/gdp-by-industry",
+        "https://www.bea.gov/resources/guide-interactive-gdp-industry-accounts-tables"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    },
+    {
+      "source_id": "BLS_CES_MANUFACTURING",
+      "dataset_name": "CES manufacturing employment",
+      "publisher": "US Bureau of Labor Statistics",
+      "exact_source_url": "https://data.bls.gov/timeseries/CES3000000001",
+      "publication_or_table_id": "CES3000000001",
+      "original_units": "thousands of employees",
+      "frequency": "monthly, seasonally adjusted",
+      "countries": [
+        "USA"
+      ],
+      "industry_coverage": "manufacturing aggregate",
+      "earliest_available_period": null,
+      "latest_available_period": null,
+      "coverage_evidence": "Selected-country coverage has not been audited.",
+      "price_basis": "not applicable",
+      "base_year": null,
+      "formats": [
+        "series report download",
+        "JSON API"
+      ],
+      "acquisition_mechanism": "Manual series report; API documented but not implemented here",
+      "release_or_vintage": null,
+      "access_conditions": "Public source page; selected download not tested.",
+      "reuse_conditions": "Not yet verified; do not redistribute selected data before review.",
+      "verification_status": "documentation_verified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "Counts payroll jobs, not the same universe as PLFS employed persons.",
+        "Series bounds and historical revision status not audited."
+      ],
+      "evidence_urls": [
+        "https://data.bls.gov/timeseries/CES3000000001",
+        "https://www.bls.gov/developers/api_signature_v2.htm"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    },
+    {
+      "source_id": "FED_G17",
+      "dataset_name": "Industrial production and capacity utilization",
+      "publisher": "Board of Governors of the Federal Reserve System",
+      "exact_source_url": "https://www.federalreserve.gov/releases/g17/",
+      "publication_or_table_id": "G.17",
+      "original_units": "index/reference base must be verified in chosen series",
+      "frequency": "monthly",
+      "countries": [
+        "USA"
+      ],
+      "industry_coverage": null,
+      "earliest_available_period": null,
+      "latest_available_period": null,
+      "coverage_evidence": "Selected-country coverage has not been audited.",
+      "price_basis": null,
+      "base_year": null,
+      "formats": [
+        "release tables",
+        "data download"
+      ],
+      "acquisition_mechanism": "Manual release Data Download / text files; exact series not yet selected",
+      "release_or_vintage": null,
+      "access_conditions": "Public source page; selected download not tested.",
+      "reuse_conditions": "Not yet verified; do not redistribute selected data before review.",
+      "verification_status": "documentation_verified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "Coverage and seasonal adjustment differ from Indian IIP.",
+        "Download programme transition announced for November 2026; recheck links before implementing."
+      ],
+      "evidence_urls": [
+        "https://www.federalreserve.gov/releases/g17/"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    },
+    {
+      "source_id": "FED_H15",
+      "dataset_name": "Selected interest rates",
+      "publisher": "Board of Governors of the Federal Reserve System",
+      "exact_source_url": "https://www.federalreserve.gov/releases/h15/",
+      "publication_or_table_id": "H.15",
+      "original_units": "percent per annum",
+      "frequency": "daily; frequency-specific aggregates available",
+      "countries": [
+        "USA"
+      ],
+      "industry_coverage": null,
+      "earliest_available_period": null,
+      "latest_available_period": null,
+      "coverage_evidence": "Selected-country coverage has not been audited.",
+      "price_basis": null,
+      "base_year": null,
+      "formats": [
+        "release tables",
+        "data download"
+      ],
+      "acquisition_mechanism": "Manual release Data Download / text files; exact series not yet selected",
+      "release_or_vintage": null,
+      "access_conditions": "Public source page; selected download not tested.",
+      "reuse_conditions": "Not yet verified; do not redistribute selected data before review.",
+      "verification_status": "documentation_verified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "Effective rate is not the same construct as a policy target; lending rates differ.",
+        "Download programme transition announced for November 2026; recheck links before implementing."
+      ],
+      "evidence_urls": [
+        "https://www.federalreserve.gov/releases/h15/"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    },
+    {
+      "source_id": "FED_H8",
+      "dataset_name": "Assets and liabilities of commercial banks",
+      "publisher": "Board of Governors of the Federal Reserve System",
+      "exact_source_url": "https://www.federalreserve.gov/releases/h8/",
+      "publication_or_table_id": "H.8",
+      "original_units": null,
+      "frequency": "weekly release",
+      "countries": [
+        "USA"
+      ],
+      "industry_coverage": null,
+      "earliest_available_period": null,
+      "latest_available_period": null,
+      "coverage_evidence": "Selected-country coverage has not been audited.",
+      "price_basis": null,
+      "base_year": null,
+      "formats": [
+        "release tables",
+        "data download"
+      ],
+      "acquisition_mechanism": "Manual release Data Download / text files; exact series not yet selected",
+      "release_or_vintage": null,
+      "access_conditions": "Public source page; selected download not tested.",
+      "reuse_conditions": "Not yet verified; do not redistribute selected data before review.",
+      "verification_status": "documentation_verified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "Select bank credit definition, adjustments and units before computing growth.",
+        "Download programme transition announced for November 2026; recheck links before implementing."
+      ],
+      "evidence_urls": [
+        "https://www.federalreserve.gov/releases/h8/"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    },
+    {
+      "source_id": "WB_CPI",
+      "dataset_name": "Inflation, consumer prices (annual %)",
+      "publisher": "World Bank — World Development Indicators",
+      "exact_source_url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "publication_or_table_id": "FP.CPI.TOTL.ZG",
+      "original_units": "annual percent change",
+      "frequency": "annual",
+      "countries": [
+        "IND",
+        "USA"
+      ],
+      "industry_coverage": "whole economy",
+      "earliest_available_period": null,
+      "latest_available_period": null,
+      "coverage_evidence": "Selected-country coverage has not been audited.",
+      "price_basis": "consumer price change",
+      "base_year": null,
+      "formats": [
+        "CSV",
+        "XML",
+        "Excel"
+      ],
+      "acquisition_mechanism": "Official indicator page download; selected-country API acquisition not implemented for this indicator",
+      "release_or_vintage": null,
+      "access_conditions": "Public source page; selected download not tested.",
+      "reuse_conditions": "CC BY 4.0 shown on indicator page; retain upstream attribution",
+      "verification_status": "documentation_verified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "Indicator documentation verified, but India/USA non-null period coverage has not been checked.",
+        "National macro proxy, not a measurement of an individual industry exposure."
+      ],
+      "evidence_urls": [
+        "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    },
+    {
+      "source_id": "WB_EXPORT_GROWTH",
+      "dataset_name": "Exports of goods and services (annual % growth)",
+      "publisher": "World Bank — World Development Indicators",
+      "exact_source_url": "https://data.worldbank.org/indicator/NE.EXP.GNFS.KD.ZG",
+      "publication_or_table_id": "NE.EXP.GNFS.KD.ZG",
+      "original_units": "annual percent change",
+      "frequency": "annual",
+      "countries": [
+        "IND",
+        "USA"
+      ],
+      "industry_coverage": "whole economy",
+      "earliest_available_period": null,
+      "latest_available_period": null,
+      "coverage_evidence": "Selected-country coverage has not been audited.",
+      "price_basis": "real export growth",
+      "base_year": null,
+      "formats": [
+        "CSV",
+        "XML",
+        "Excel"
+      ],
+      "acquisition_mechanism": "Official indicator page download; selected-country API acquisition not implemented for this indicator",
+      "release_or_vintage": null,
+      "access_conditions": "Public source page; selected download not tested.",
+      "reuse_conditions": "CC BY 4.0 shown on indicator page; retain upstream attribution",
+      "verification_status": "documentation_verified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "Indicator documentation verified, but India/USA non-null period coverage has not been checked.",
+        "National macro proxy, not a measurement of an individual industry exposure."
+      ],
+      "evidence_urls": [
+        "https://data.worldbank.org/indicator/NE.EXP.GNFS.KD.ZG"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    },
+    {
+      "source_id": "WB_TRADE_SHARE",
+      "dataset_name": "Trade (% of GDP)",
+      "publisher": "World Bank — World Development Indicators",
+      "exact_source_url": "https://data.worldbank.org/indicator/NE.TRD.GNFS.ZS",
+      "publication_or_table_id": "NE.TRD.GNFS.ZS",
+      "original_units": "percent of GDP",
+      "frequency": "annual",
+      "countries": [
+        "IND",
+        "USA"
+      ],
+      "industry_coverage": "whole economy",
+      "earliest_available_period": null,
+      "latest_available_period": null,
+      "coverage_evidence": "Selected-country coverage has not been audited.",
+      "price_basis": "current-price ratio; not export growth",
+      "base_year": null,
+      "formats": [
+        "CSV",
+        "XML",
+        "Excel"
+      ],
+      "acquisition_mechanism": "Official indicator page download; selected-country API acquisition not implemented for this indicator",
+      "release_or_vintage": null,
+      "access_conditions": "Public source page; selected download not tested.",
+      "reuse_conditions": "CC BY 4.0 shown on indicator page; retain upstream attribution",
+      "verification_status": "documentation_verified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "Indicator documentation verified, but India/USA non-null period coverage has not been checked.",
+        "National macro proxy, not a measurement of an individual industry exposure."
+      ],
+      "evidence_urls": [
+        "https://data.worldbank.org/indicator/NE.TRD.GNFS.ZS"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    },
+    {
+      "source_id": "WB_EXCHANGE_RATE",
+      "dataset_name": "Official exchange rate (LCU per US$, period average)",
+      "publisher": "World Bank — World Development Indicators",
+      "exact_source_url": "https://data.worldbank.org/indicator/PA.NUS.FCRF",
+      "publication_or_table_id": "PA.NUS.FCRF",
+      "original_units": "local currency units per USD",
+      "frequency": "annual",
+      "countries": [
+        "IND",
+        "USA"
+      ],
+      "industry_coverage": "whole economy",
+      "earliest_available_period": null,
+      "latest_available_period": null,
+      "coverage_evidence": "Selected-country coverage has not been audited.",
+      "price_basis": "nominal period-average exchange rate",
+      "base_year": null,
+      "formats": [
+        "CSV",
+        "XML",
+        "Excel"
+      ],
+      "acquisition_mechanism": "Official indicator page download; selected-country API acquisition not implemented for this indicator",
+      "release_or_vintage": null,
+      "access_conditions": "Public source page; selected download not tested.",
+      "reuse_conditions": "CC BY 4.0 shown on indicator page; retain upstream attribution",
+      "verification_status": "documentation_verified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "Indicator documentation verified, but India/USA non-null period coverage has not been checked.",
+        "National macro proxy, not a measurement of an individual industry exposure."
+      ],
+      "evidence_urls": [
+        "https://data.worldbank.org/indicator/PA.NUS.FCRF"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    },
+    {
+      "source_id": "EIA_BRENT",
+      "dataset_name": "Europe Brent spot price FOB",
+      "publisher": "US Energy Information Administration",
+      "exact_source_url": "https://www.eia.gov/dnav/pet/hist/RBRTED.htm",
+      "publication_or_table_id": "RBRTE daily history page",
+      "original_units": "USD per barrel",
+      "frequency": "daily; weekly/monthly/annual views available",
+      "countries": [
+        "international_benchmark"
+      ],
+      "industry_coverage": "commodity benchmark, not an industry outcome",
+      "earliest_available_period": "1987-05-20",
+      "latest_available_period": null,
+      "coverage_evidence": "First daily observation displayed; latest selected file period not audited.",
+      "price_basis": "nominal spot price",
+      "base_year": null,
+      "formats": [
+        "HTML",
+        "XLS"
+      ],
+      "acquisition_mechanism": "Manual Download Data link on official history page",
+      "release_or_vintage": null,
+      "access_conditions": "Public source page; selected download not tested.",
+      "reuse_conditions": "EIA public data may be reused with attribution; check protected third-party exceptions.",
+      "verification_status": "documentation_verified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "Brent is not a country-specific landed energy cost or firm energy exposure."
+      ],
+      "evidence_urls": [
+        "https://www.eia.gov/dnav/pet/hist/RBRTED.htm",
+        "https://www.eia.gov/about/copyrights_reuse.php"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    },
+    {
+      "source_id": "EIA_HENRY_HUB",
+      "dataset_name": "Henry Hub natural gas spot price",
+      "publisher": "US Energy Information Administration",
+      "exact_source_url": "https://www.eia.gov/dnav/ng/hist/rngwhhdm.htm",
+      "publication_or_table_id": "RNGWHHD monthly history page",
+      "original_units": "USD per million Btu",
+      "frequency": "monthly",
+      "countries": [
+        "USA"
+      ],
+      "industry_coverage": "commodity benchmark, not an industry outcome",
+      "earliest_available_period": "1997-01",
+      "latest_available_period": "2026-09",
+      "coverage_evidence": "Displayed monthly history inspected; file not acquired.",
+      "price_basis": "nominal spot price",
+      "base_year": null,
+      "formats": [
+        "HTML",
+        "XLS"
+      ],
+      "acquisition_mechanism": "Manual XLS: https://www.eia.gov/dnav/ng/hist_xls/RNGWHHDm.xls",
+      "release_or_vintage": "History page release date 28 October 2026",
+      "access_conditions": "Public source page; selected download not tested.",
+      "reuse_conditions": "EIA public data may be reused with attribution; check protected third-party exceptions.",
+      "verification_status": "documentation_verified",
+      "verification_date": "2026-11-02",
+      "comparability_status": "pending",
+      "known_limitations": [
+        "US gas hub is not an Indian LNG import price; geographic basis risk remains."
+      ],
+      "evidence_urls": [
+        "https://www.eia.gov/dnav/ng/hist/rngwhhdm.htm",
+        "https://www.eia.gov/about/copyrights_reuse.php"
+      ],
+      "manual_procedure": "See docs/data/MANUAL_ACQUISITION.md"
+    }
+  ]
+}

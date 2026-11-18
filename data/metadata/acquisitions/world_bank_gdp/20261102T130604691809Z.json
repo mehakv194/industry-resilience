@@ -1,0 +1,124 @@
+{
+  "source_id": "WB_WDI_GDP_GROWTH",
+  "run_id": "20261102T130604691809Z",
+  "publisher": "World Bank, World Development Indicators",
+  "indicator_id": "NY.GDP.MKTP.KD.ZG",
+  "units": "annual percent change",
+  "frequency": "annual; original year labels retained",
+  "price_basis": "real GDP growth; underlying definition retained in indicator metadata",
+  "base_year": null,
+  "redistribution_status": "CC BY 4.0; attribute World Bank and upstream providers",
+  "license_url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+  "comparability_status": "pending",
+  "validation_status": "passed_structure_and_csv_spot_checks",
+  "files": {
+    "observations": {
+      "requested_url": "https://api.worldbank.org/v2/country/IND;USA/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&source=2",
+      "final_url": "https://api.worldbank.org/v2/country/IND;USA/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&source=2",
+      "retrieved_at_utc": "2026-11-02T13:06:05.374438+00:00",
+      "content_type": "application/json;charset=utf-8",
+      "etag": null,
+      "last_modified": "Mon, 02 Nov 2026 13:06:18 GMT",
+      "path": "data/raw/world_bank_gdp/9bc1fa7b2b9ae02e4e040c342505d83079d540a7ddd6b5613aa5096a8d5af709.json",
+      "sha256": "9bc1fa7b2b9ae02e4e040c342505d83079d540a7ddd6b5613aa5096a8d5af709",
+      "bytes": 28589
+    },
+    "indicator_metadata": {
+      "requested_url": "https://api.worldbank.org/v2/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+      "final_url": "https://api.worldbank.org/v2/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+      "retrieved_at_utc": "2026-11-02T13:06:05.510419+00:00",
+      "content_type": "application/json;charset=utf-8",
+      "etag": null,
+      "last_modified": "Sun, 01 Nov 2026 05:15:01 GMT",
+      "path": "data/raw/world_bank_gdp/ed7703d841d4dde2d1cb858f0dd53229fe3e841f72abb17dbc8c950ad20c88ce.json",
+      "sha256": "ed7703d841d4dde2d1cb858f0dd53229fe3e841f72abb17dbc8c950ad20c88ce",
+      "bytes": 909
+    },
+    "csv_crosscheck": {
+      "requested_url": "https://api.worldbank.org/v2/en/indicator/NY.GDP.MKTP.KD.ZG?downloadformat=csv",
+      "final_url": "https://api.worldbank.org/v2/en/indicator/NY.GDP.MKTP.KD.ZG?downloadformat=csv",
+      "retrieved_at_utc": "2026-11-02T13:06:05.705873+00:00",
+      "content_type": "application/zip",
+      "etag": null,
+      "last_modified": "Mon, 02 Nov 2026 08:39:02 GMT",
+      "path": "data/raw/world_bank_gdp/ad3822b6737b47770b005f2e8ddbf89633ab51a662aa7c56c23abcfa1e177899.zip",
+      "sha256": "ad3822b6737b47770b005f2e8ddbf89633ab51a662aa7c56c23abcfa1e177899",
+      "bytes": 140777
+    }
+  },
+  "indicator_metadata": {
+    "id": "NY.GDP.MKTP.KD.ZG",
+    "name": "GDP growth (annual %)",
+    "unit": "",
+    "source": {
+      "id": "2",
+      "value": "World Development Indicators"
+    },
+    "sourceNote": "Gross domestic product is the total income earned through the production of goods and services in an economic territory during an accounting period. It can be measured in three different ways: using either the expenditure approach, the income approach, or the production approach. This indicator denotes the percentage change over each previous year of the constant price (base year 2015) series in United States dollars.",
+    "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
+    "topics": [
+      {
+        "id": "3",
+        "value": "Economy & Growth"
+      }
+    ]
+  },
+  "coverage": {
+    "row_count": 132,
+    "dataset_last_updated": "2026-10-08",
+    "countries": {
+      "IND": {
+        "rows": 66,
+        "non_null": 65,
+        "null": 1,
+        "first_observed_period": "1961",
+        "last_observed_period": "2025",
+        "missing_periods": [
+          "1960"
+        ]
+      },
+      "USA": {
+        "rows": 66,
+        "non_null": 65,
+        "null": 1,
+        "first_observed_period": "1961",
+        "last_observed_period": "2025",
+        "missing_periods": [
+          "1960"
+        ]
+      }
+    }
+  },
+  "spot_checks": [
+    {
+      "country": "IND",
+      "period": "2008",
+      "value": 3.08669805950082
+    },
+    {
+      "country": "IND",
+      "period": "2013",
+      "value": 6.38610640091713
+    },
+    {
+      "country": "IND",
+      "period": "2022",
+      "value": 7.6093649776932
+    },
+    {
+      "country": "USA",
+      "period": "2008",
+      "value": 0.113587247501258
+    },
+    {
+      "country": "USA",
+      "period": "2013",
+      "value": 2.11783009443471
+    },
+    {
+      "country": "USA",
+      "period": "2022",
+      "value": 2.52421385073222
+    }
+  ]
+}
