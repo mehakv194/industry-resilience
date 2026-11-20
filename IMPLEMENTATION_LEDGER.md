@@ -64,3 +64,9 @@ Checks: reproduced the original -1,195.06 pp gap and the 31.65% India baseline s
 Published the static Vite build to https://delicate-torrone-e3876f.netlify.app/ via Netlify's project upload. The build includes the expanded study by default, ten industry options and Germany. The static redirect supports direct navigation to Case Studies and Risk Calculator. The deployment is a manual upload.
 
 Verified the live homepage, the Germany chemicals deep link (-8.21 pp, Eurostat NACE C20), the original 2014 India–US motor-vehicle comparison (+6.89 pp), and an unauthenticated request to the calculator route. TypeScript/build and the three focused numerical checks passed. Original coverage remains 16 ready cases. Expanded coverage remains 200 eligible of 210.
+
+## Dedicated Research Results page
+
+Added the Model Results navigation and /results route in web/src/main.tsx, with the page in web/src/results.tsx, its scoped styles in web/src/results.css, and the static artifact adapter in web/src/results-data.ts. Reconciled the warehouse counts, classifier folds, PCA variance, cluster assignments, anomaly scores and leading Apriori rule against the checked-in exports. The page also shows the local projections, descriptive AI adoption, skipped tariff study, and notebook and warehouse evidence.
+
+TypeScript and the Vite production build passed with a large-chunk warning. Numerical checks covered exact 12-month YoY, the 10/12 observation threshold and the percentage-point growth shift. The browser smoke covered direct navigation, classifier selection and fold details, country/industry/event filters, singleton exclusion and the warehouse deep link. Additional classification metrics and refined clustering exports were unavailable. Next release step is a separate Netlify publish and live /results smoke check.
