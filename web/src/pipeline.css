@@ -35,6 +35,12 @@
 .pipeline-model p, .pipeline-detail p { margin-top: 7px; }
 .pipeline-model a, .pipeline-detail a { display: inline-flex; align-items: center; gap: 5px; margin-top: 7px; font-size: .88rem; }
 .pipeline-detail { border-top: 1px solid var(--border); padding-top: 10px; }
+.pipeline-table, .pipeline-sql { max-width: 100%; overflow-x: auto; margin-block: 8px; }
+.pipeline-table table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+.pipeline-table :is(th, td) { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--border); }
+.pipeline-table th { color: var(--navy); background: #eaf4f6; }
+.pipeline-stage, .pipeline-models { min-width: 0; grid-template-columns: minmax(0, 1fr); }
+.pipeline-sql { background: #f1f6f8; padding: 10px; }
 .pipeline-output { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px; color: var(--navy); height: 100%; align-items: start; }
 .pipeline-output:hover { background: #eaf4f6; text-decoration: none; }
 .pipeline-output svg { color: var(--teal); margin-top: 3px; }

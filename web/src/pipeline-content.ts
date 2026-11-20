@@ -37,6 +37,12 @@ export const stages = [
     detail: 'The original 12-month comparisons require at least 10 observed months per window. Growth shifts measure differences in year-over-year growth in percentage points.',
   },
   {
+    id: 'pipeline-warehouse', nav: 'Warehouse', title: 'DuckDB production warehouse', icon: Database,
+    description: 'Inspect the fact table, dimensions and event calendar.',
+    nodes: [],
+    detail: 'The warehouse loads the pinned, harmonized research panel offline and reconciles observation counts to the source manifest before publishing SQL results.',
+  },
+  {
     id: 'pipeline-models', nav: 'Models', title: 'Analysis layer', icon: Workflow,
     description: 'Measure historical changes and explore patterns across cases.',
     nodes: [

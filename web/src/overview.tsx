@@ -115,7 +115,8 @@ export function Overview() {
           <Bar dataKey="accuracy" name="Held-out accuracy" fill="#126F8B" isAnimationActive={false} />
         </BarChart>
       </ResponsiveContainer>
-      <p>Random Forest scored {value(performance[3].accuracy, '%', false)} versus {value(performance[0].accuracy, '%', false)} for always choosing the training fold’s most common outcome. The same shocks appeared across folds, so accuracy on a new shock remains untested.</p>
+      <p>Random Forest led the comparison by {value(performance[3].accuracy - performance[0].accuracy, 'pp', false)} over the majority baseline. The same shocks appeared across folds, so accuracy on a new shock remains untested.</p>
+      <Link className="source" to="/pipeline#pipeline-models">View fold results <ArrowRight size={15} /></Link>
     </section>
     <section id="association-evidence" className="card finding">
       <CardTitle title="What tended to happen together?" detail={`Exploratory patterns across ${patternSample} observed cases`} />
