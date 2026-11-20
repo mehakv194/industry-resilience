@@ -1,14 +1,23 @@
 """Build the expanded, observed monthly panel from verified source snapshots."""
 
+import argparse
 import csv
 import json
 from datetime import UTC, datetime
 from hashlib import sha256
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from openpyxl import load_workbook
 
-from industry_resilience.ingestion.energy import INDIA_URL, aligned, index_yoy, number, window_months
+from industry_resilience.ingestion.energy import (
+    INDIA_URL,
+    aligned,
+    index_yoy,
+    number,
+    window_months,
+)
+from industry_resilience.ingestion.http import fetch
 
 CONFIG = Path("research_expansion/config")
 OUT = Path("reports/research")
@@ -29,11 +38,17 @@ CODES = {
 }
 FED = "https://www.federalreserve.gov/releases/g17/related_data/ip_nsa_isic4.xlsx"
 EU = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
-DE = EU + "sts_inpr_m?geo=DE&freq=M&indic_bt=PRD&unit=I21&s_adj=NSA&sinceTimePeriod=2012-01" + "".join(
-    f"&nace_r2=C{code}" for code in CODES
+DE = (
+    EU
+    + "sts_inpr_m?geo=DE&freq=M&indic_bt=PRD&unit=I21&s_adj=NSA&sinceTimePeriod=2012-01"
+    + "".join(f"&nace_r2=C{code}" for code in CODES)
 )
 AI = EU + "isoc_eb_ai?geo=DE&indic_is=E_AI_TANY&unit=PC_ENT&size_emp=GE10"
 BRENT = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=MCOILBRENTEU"
+PINK_SHEET = (
+    "https://thedocs.worldbank.org/en/doc/"
+    "74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx"
+)
 
 
 def table(path):
@@ -49,14 +64,20 @@ def write_csv(path, rows):
 
 
 def write_json(path, data):
-    path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":"), allow_nan=False) + "\n",
-                    encoding="utf-8")
+    path.write_text(
+        json.dumps(data, ensure_ascii=False, separators=(",", ":"), allow_nan=False) + "\n",
+        encoding="utf-8",
+    )
 
 
 def receipt(path, url, vintage):
-    return dict(download_url=url, vintage=vintage, sha256=sha256(path.read_bytes()).hexdigest(),
-                retrieved_at_utc=datetime.fromtimestamp(path.stat().st_mtime, UTC).isoformat(),
-                retrieval_timestamp_basis="downloaded file modification time")
+    return dict(
+        download_url=url,
+        vintage=vintage,
+        sha256=sha256(path.read_bytes()).hexdigest(),
+        retrieved_at_utc=datetime.fromtimestamp(path.stat().st_mtime, UTC).isoformat(),
+        retrieval_timestamp_basis="downloaded file modification time",
+    )
 
 
 def eurostat(payload, filters):
@@ -65,14 +86,16 @@ def eurostat(payload, filters):
         if set(axes[payload["id"].index(axis)]) != set(expected):
             raise ValueError(f"Eurostat dimensions changed: {axis}")
     values = payload["value"]
-    for offset, observation in (values.items() if isinstance(values, dict) else enumerate(values)):
+    for offset, observation in values.items() if isinstance(values, dict) else enumerate(values):
         index = int(offset)
         coords = []
         for size in reversed(payload["size"]):
             index, coord = divmod(index, size)
             coords.append(coord)
-        labels = [next(key for key, idx in axis.items() if idx == coord)
-                  for axis, coord in zip(axes, reversed(coords), strict=True)]
+        labels = [
+            next(key for key, idx in axis.items() if idx == coord)
+            for axis, coord in zip(axes, reversed(coords), strict=True)
+        ]
         yield dict(zip(payload["id"], labels, strict=True)), number(observation)
 
 
@@ -87,10 +110,17 @@ def main():
         raise ValueError("Unexpected India production snapshot")
     de = json.loads(de_file.read_bytes())
     german = {code: {} for code in CODES}
-    for dim, observation in eurostat(de, {
-        "geo": ["DE"], "freq": ["M"], "indic_bt": ["PRD"], "unit": ["I21"],
-        "s_adj": ["NSA"], "nace_r2": ["C" + code for code in CODES],
-    }):
+    for dim, observation in eurostat(
+        de,
+        {
+            "geo": ["DE"],
+            "freq": ["M"],
+            "indic_bt": ["PRD"],
+            "unit": ["I21"],
+            "s_adj": ["NSA"],
+            "nace_r2": ["C" + code for code in CODES],
+        },
+    ):
         german[dim["nace_r2"][1:]][dim["time"]] = observation
 
     book = load_workbook(fed_file, read_only=True, data_only=True)
@@ -99,11 +129,25 @@ def main():
     book.close()
     if "not seasonally adjusted" not in rows[1][0] or "2017=100" not in rows[2][0]:
         raise ValueError("Unexpected G.17 workbook units")
-    header = ("Rev 4", "Year", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-              "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+    header = (
+        "Rev 4",
+        "Year",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    )
     start = next(i for i, row in enumerate(rows) if row == header)
     american = {code: {} for code in CODES}
-    for code, year, *levels in rows[start + 1:]:
+    for code, year, *levels in rows[start + 1 :]:
         if str(code) in american and isinstance(year, int) and year >= 2012:
             target = american[str(code)]
             for m, level in enumerate(levels, 1):
@@ -113,64 +157,168 @@ def main():
                 target[month] = number(level)
 
     brent_rows = table(brent_file)
-    brent = aligned([row["observation_date"] for row in brent_rows],
-                    [row["MCOILBRENTEU"] for row in brent_rows])
+    brent = aligned(
+        [row["observation_date"] for row in brent_rows], [row["MCOILBRENTEU"] for row in brent_rows]
+    )
     inputs = {
-        "IND": (receipt(india_file, INDIA_URL, india["meta"]["vintage"]),
-                "MoSPI / Measure of India republication", "Published YoY percent",
-                "https://microdata.gov.in/nada/index.php/catalog/148"),
-        "USA": (receipt(fed_file, FED, None), "Federal Reserve G.17",
-                "NSA index, 2017=100", "https://www.federalreserve.gov/releases/g17/download.htm"),
-        "DEU": (receipt(de_file, DE, de["updated"]), "Eurostat sts_inpr_m",
-                "NSA index, 2021=100",
-                "https://ec.europa.eu/eurostat/databrowser/view/sts_inpr_m/default/table?lang=en"),
+        "IND": (
+            receipt(india_file, INDIA_URL, india["meta"]["vintage"]),
+            "MoSPI / Measure of India republication",
+            "Published YoY percent",
+            "https://microdata.gov.in/nada/index.php/catalog/148",
+        ),
+        "USA": (
+            receipt(fed_file, FED, None),
+            "Federal Reserve G.17",
+            "NSA index, 2017=100",
+            "https://www.federalreserve.gov/releases/g17/download.htm",
+        ),
+        "DEU": (
+            receipt(de_file, DE, de["updated"]),
+            "Eurostat sts_inpr_m",
+            "NSA index, 2021=100",
+            "https://ec.europa.eu/eurostat/databrowser/view/sts_inpr_m/default/table?lang=en",
+        ),
     }
-    panel, coverage = [], []
+    coverage = []
     compact = {}
     for code, key in CODES.items():
         india_series = india["series"]["sub_manufacturing_manufacture_of_" + key]
-        production = {"IND": aligned(india["dates"], india_series["data"]),
-                      "USA": index_yoy(american[code]), "DEU": index_yoy(german[code])}
+        production = {
+            "IND": aligned(india["dates"], india_series["data"]),
+            "USA": index_yoy(american[code]),
+            "DEU": index_yoy(german[code]),
+        }
         for country, values in production.items():
-            series = {"IND": india_series["label"], "USA": f"ISIC {code}", "DEU": f"NACE C{code}"}[country]
+            series = {"IND": india_series["label"], "USA": f"ISIC {code}", "DEU": f"NACE C{code}"}[
+                country
+            ]
             observed = [month for month in MONTHS if values.get(month) is not None]
             metadata, publisher, unit, source_url = inputs[country]
-            coverage.append(dict(
-                metadata, country=country, industry_code=code, series_id=series, publisher=publisher,
-                source_url=source_url, unit_raw=unit, unit_derived="YoY percent",
-                match_grade="approximate", status="observed" if observed else "unavailable",
-                first_month=observed[0] if observed else None, last_month=observed[-1] if observed else None,
-                valid_count=len(observed),
-            ))
+            coverage.append(
+                dict(
+                    metadata,
+                    country=country,
+                    industry_code=code,
+                    series_id=series,
+                    publisher=publisher,
+                    source_url=source_url,
+                    unit_raw=unit,
+                    unit_derived="YoY percent",
+                    match_grade="approximate",
+                    status="observed" if observed else "unavailable",
+                    first_month=observed[0] if observed else None,
+                    last_month=observed[-1] if observed else None,
+                    valid_count=len(observed),
+                )
+            )
             compact[country + code] = [values.get(month) for month in MONTHS]
-            panel.extend(dict(date=month + "-01", country=country, industry_code=code,
-                              production_yoy_pct=values.get(month), brent_usd=brent.get(month))
-                         for month in MONTHS)
     ai = json.loads(ai_file.read_bytes())
-    indicators = [dict(year=dim["time"], country="DEU", industry_code="",
-                       indicator_id="enterprise_ai_any", value=observation,
-                       unit="Percent of enterprises", source_url=AI,
-                       definition="German enterprises with 10+ workers using AI, Eurostat survey coverage",
-                       geography_level="country / surveyed sectors")
-                  for dim, observation in eurostat(ai, {
-                      "geo": ["DE"], "nace_r2": ["C10-S951_X_K"], "size_emp": ["GE10"],
-                      "indic_is": ["E_AI_TANY"], "unit": ["PC_ENT"], "freq": ["A"],
-                  }) if observation is not None]
-    assert len(coverage) == 30 and len(panel) == len(MONTHS) * 30
+    indicators = [
+        dict(
+            year=dim["time"],
+            country="DEU",
+            industry_code="",
+            indicator_id="enterprise_ai_any",
+            value=observation,
+            unit="Percent of enterprises",
+            source_url=AI,
+            definition="German enterprises with 10+ workers using AI, Eurostat survey coverage",
+            geography_level="country / surveyed sectors",
+        )
+        for dim, observation in eurostat(
+            ai,
+            {
+                "geo": ["DE"],
+                "nace_r2": ["C10-S951_X_K"],
+                "size_emp": ["GE10"],
+                "indic_is": ["E_AI_TANY"],
+                "unit": ["PC_ENT"],
+                "freq": ["A"],
+            },
+        )
+        if observation is not None
+    ]
+    assert len(coverage) == 30
     OUT.mkdir(parents=True, exist_ok=True)
-    PROCESSED.mkdir(parents=True, exist_ok=True)
-    write_csv(PROCESSED / "panel_monthly.csv", panel)
-    write_csv(PROCESSED / "ai_indicators.csv", indicators)
-    write_json(OUT / "source_manifest.json", dict(
-        production=coverage, brent=receipt(brent_file, BRENT, None),
-        ai=receipt(ai_file, AI, ai["updated"]),
-    ))
+    gas_file = CACHE / "research/worldbank.xlsx"
+    book = load_workbook(gas_file, read_only=True, data_only=True)
+    gas_rows = list(book["Monthly Prices"].values)
+    book.close()
+    column = gas_rows[4].index("Natural gas, Europe")
+    if "mmbtu" not in gas_rows[5][column].lower():
+        raise ValueError("Unexpected World Bank European gas unit")
+    gas = {
+        row[0].replace("M", "-"): number(row[column])
+        for row in gas_rows[6:]
+        if isinstance(row[0], str) and row[0].replace("M", "-") in MONTHS
+    }
+    write_json(
+        OUT / "source_manifest.json",
+        dict(
+            production=coverage,
+            brent=receipt(brent_file, BRENT, None),
+            ai=receipt(ai_file, AI, ai["updated"]),
+            european_gas=dict(
+                receipt(gas_file, PINK_SHEET, gas_rows[3][0]),
+                publisher="World Bank Pink Sheet",
+                series_id="Natural gas, Europe",
+                unit="nominal USD per MMBtu",
+            ),
+        ),
+    )
     write_json(OUT / "coverage.json", coverage)
-    write_json(OUT / "panel.json", dict(
-        months=MONTHS, production=compact, brent=[brent.get(month) for month in MONTHS],
-        ai=indicators, events=table(CONFIG / "event_windows.csv"), industries=table(CONFIG / "industry_isic4.csv"),
-    ))
+    payload = dict(
+        months=MONTHS,
+        production=compact,
+        brent=[brent.get(month) for month in MONTHS],
+        european_gas=[gas.get(month) for month in MONTHS],
+        ai=indicators,
+        events=table(CONFIG / "event_windows.csv"),
+        industries=table(CONFIG / "industry_isic4.csv"),
+    )
+    write_json(OUT / "panel.json", payload)
+    restore_csv(payload)
+
+
+def restore_csv(panel):
+    """Recreate notebook inputs from the checked-in panel without downloading revisions."""
+    PROCESSED.mkdir(parents=True, exist_ok=True)
+    rows = [
+        dict(
+            date=month + "-01",
+            country=key[:3],
+            industry_code=key[3:],
+            production_yoy_pct=observation,
+            brent_usd=brent,
+        )
+        for key, series in panel["production"].items()
+        for month, observation, brent in zip(panel["months"], series, panel["brent"], strict=True)
+    ]
+    write_csv(PROCESSED / "panel_monthly.csv", rows)
+    write_csv(PROCESSED / "ai_indicators.csv", panel["ai"])
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--from-report", action="store_true")
+    mode.add_argument("--fetch-missing", action="store_true")
+    args = parser.parse_args()
+    if args.from_report:
+        restore_csv(json.loads((OUT / "panel.json").read_bytes()))
+    else:
+        if args.fetch_missing:
+            for name, url in {
+                "ir-india": INDIA_URL,
+                "ir-MCOILBRENTEU": BRENT,
+                "research/fed.xlsx": FED,
+                "research/de.json": DE,
+                "research/ai.json": AI,
+                "research/worldbank.xlsx": PINK_SHEET,
+            }.items():
+                path = CACHE / name
+                if not path.exists():
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_bytes(fetch(url, (urlsplit(url).netloc,)).body)
+        main()
