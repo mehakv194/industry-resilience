@@ -36,3 +36,11 @@ Updated README.md with fixed windows, units, exact source links, research preced
 Rebuilt all four static JSON files from the downloaded bytes and compared SHA-256 hashes. The regenerated outputs matched byte for byte. The 12-month lag, 9/12 versus 10/12 threshold, percentage-point subtraction and 16 ready / eight matched results passed. Ruff lint and format checks passed for both new modules. The existing mypy launcher cannot start because its configured Python 3.12 executable is absent.
 
 Release blocked at frontend integration: no package.json, static React production build, or linked Netlify configuration was found. Browser smoke and live deployment are pending. Next: open the existing React project and connect the four JSON outputs before building and deploying.
+
+## Phase 5 frontend implemented
+
+The supplied Phase 5 brief authorized creating the React app in web/. This resolves the missing frontend recorded above. Added a Vite/React/TypeScript frontend with a shared adapter for the Phase 4 case metrics, normalized monthly growth and Brent observations, and source manifest. Overview, Case Studies, and Risk Calculator share the supplied light theme. Added Netlify build and client routing configuration and documented local commands in README.md. Existing Python, Streamlit, and data outputs were preserved.
+
+TypeScript and the production build passed. Browser smoke covered 2014 motor vehicles India versus US (+6.89 pp), 2022 US food with the impact-only chart and IPG311N source, and submitting the calculator and following its preselected case-study link. The narrow case-study layout had no horizontal overflow. The 2022 motor-vehicle highlight shows its baseline means so the magnitude of the pandemic-era base effect is visible.
+
+Netlify is configured. A linked project and deployment token were unavailable, so no live deployment was verified. Vite reports a large client bundle warning (905 kB minified, 239 kB gzip). Next: link the intended Netlify site and verify the deployed routes.

@@ -28,6 +28,16 @@ The comparison is descriptive. Several economic forces overlap with the Brent ep
 
 ### Reproduce the static data
 
+The React dashboard in `web/` reads the committed static JSON. From the repository root, install the locked frontend dependencies and build with Node 24:
+
+```sh
+npm --prefix web ci
+npm --prefix web run build
+npm --prefix web run preview
+```
+
+The Netlify configuration builds from `web/`, publishes its `dist/` directory, and handles direct visits to the dashboard routes.
+
 From the repository root, regenerate metrics offline from the committed monthly data and coverage audit:
 
 ```sh
