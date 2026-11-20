@@ -22,3 +22,11 @@ The original Python 3.12 environment points to an absent interpreter. The standa
 ## Phase 4
 
 Added src/industry_resilience/metrics/energy.py and reports/energy/case-metrics.json in the commit after 08b5d32. Exported 16 case summaries and eight matched deltas. Checked exact twelve-month lag, suppression at 9/12, acceptance at 10/12, percentage-point subtraction and consecutive-month rolling behavior. Equal shifts use alphabetical industry ID as the tie-break. Next: integrate static files when the React checkout is supplied.
+
+## Phase 5
+
+Blocked. Local inventory and GitHub main corroborate the Python project layout. The existing React/TypeScript/Netlify checkout is required for filters, charts, rankings, source and missing-case display. Preserved the Streamlit scaffold per the requested frontend scope. Continued with independent research documentation.
+
+## Phase 6
+
+Updated README.md with fixed windows, units, exact source links, research precedents, vintage and comparability limits, offline reproduction and one calculated motor-vehicle result. Checked the finding against the Phase 4 export. UI citation display depends on Phase 5. Next: verify the static data handoff and record release status.
