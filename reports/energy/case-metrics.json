@@ -1,0 +1,478 @@
+{
+  "cases": [
+    {
+      "country": "IND",
+      "industry": "food",
+      "event_id": "oil_collapse_2014",
+      "coverage": {
+        "baseline": 12,
+        "impact": 12,
+        "followup": 12
+      },
+      "status": "ready",
+      "source_id": "IND_FOOD",
+      "baseline_n": 12,
+      "impact_n": 12,
+      "followup_n": 12,
+      "baseline_growth_pct": 2.2675,
+      "impact_growth_pct": 4.738333333333333,
+      "followup_growth_pct": -5.95,
+      "growth_shift_pp": 2.470833333333333,
+      "followup_shift_pp": -10.688333333333333,
+      "weakest_3mo_growth_pct": -1.93,
+      "rank_within_country_event": 2,
+      "compared_industries_n": 4,
+      "notes": [
+        "Industry coverage may differ",
+        "First 12 impact months standardized; price downturn continued beyond June 2015"
+      ]
+    },
+    {
+      "country": "IND",
+      "industry": "food",
+      "event_id": "energy_spike_2022",
+      "coverage": {
+        "baseline": 12,
+        "impact": 12,
+        "followup": 12
+      },
+      "status": "ready",
+      "source_id": "IND_FOOD",
+      "baseline_n": 12,
+      "impact_n": 12,
+      "followup_n": 12,
+      "baseline_growth_pct": 7.390000000000001,
+      "impact_growth_pct": 4.5441666666666665,
+      "followup_growth_pct": 1.9075,
+      "growth_shift_pp": -2.845833333333334,
+      "followup_shift_pp": -2.6366666666666667,
+      "weakest_3mo_growth_pct": 0.8466666666666665,
+      "rank_within_country_event": 1,
+      "compared_industries_n": 4,
+      "notes": [
+        "Industry coverage may differ",
+        "2021 baseline influenced by COVID recovery; other geopolitical monetary and trade shocks overlap"
+      ]
+    },
+    {
+      "country": "IND",
+      "industry": "chemicals",
+      "event_id": "oil_collapse_2014",
+      "coverage": {
+        "baseline": 12,
+        "impact": 12,
+        "followup": 12
+      },
+      "status": "ready",
+      "source_id": "IND_CHEMICALS",
+      "baseline_n": 12,
+      "impact_n": 12,
+      "followup_n": 12,
+      "baseline_growth_pct": 4.623333333333333,
+      "impact_growth_pct": 0.48666666666666664,
+      "followup_growth_pct": 4.555,
+      "growth_shift_pp": -4.136666666666667,
+      "followup_shift_pp": 4.068333333333333,
+      "weakest_3mo_growth_pct": -3.2666666666666666,
+      "rank_within_country_event": 4,
+      "compared_industries_n": 4,
+      "notes": [
+        "US chemicals includes some pharmaceuticals while India NIC20 excludes NIC21",
+        "First 12 impact months standardized; price downturn continued beyond June 2015"
+      ]
+    },
+    {
+      "country": "IND",
+      "industry": "chemicals",
+      "event_id": "energy_spike_2022",
+      "coverage": {
+        "baseline": 12,
+        "impact": 12,
+        "followup": 12
+      },
+      "status": "ready",
+      "source_id": "IND_CHEMICALS",
+      "baseline_n": 12,
+      "impact_n": 12,
+      "followup_n": 12,
+      "baseline_growth_pct": 12.971666666666666,
+      "impact_growth_pct": 5.255,
+      "followup_growth_pct": -0.5775,
+      "growth_shift_pp": -7.716666666666666,
+      "followup_shift_pp": -5.8325,
+      "weakest_3mo_growth_pct": -1.3433333333333333,
+      "rank_within_country_event": 2,
+      "compared_industries_n": 4,
+      "notes": [
+        "US chemicals includes some pharmaceuticals while India NIC20 excludes NIC21",
+        "2021 baseline influenced by COVID recovery; other geopolitical monetary and trade shocks overlap"
+      ]
+    },
+    {
+      "country": "IND",
+      "industry": "metals",
+      "event_id": "oil_collapse_2014",
+      "coverage": {
+        "baseline": 12,
+        "impact": 12,
+        "followup": 12
+      },
+      "status": "ready",
+      "source_id": "IND_METALS",
+      "baseline_n": 12,
+      "impact_n": 12,
+      "followup_n": 12,
+      "baseline_growth_pct": 7.3741666666666665,
+      "impact_growth_pct": 7.116666666666666,
+      "followup_growth_pct": 1.275,
+      "growth_shift_pp": -0.2575000000000003,
+      "followup_shift_pp": -5.841666666666667,
+      "weakest_3mo_growth_pct": 1.1466666666666665,
+      "rank_within_country_event": 3,
+      "compared_industries_n": 4,
+      "notes": [
+        "NAICS primary metals and NIC basic metals are approximate counterparts",
+        "First 12 impact months standardized; price downturn continued beyond June 2015"
+      ]
+    },
+    {
+      "country": "IND",
+      "industry": "metals",
+      "event_id": "energy_spike_2022",
+      "coverage": {
+        "baseline": 12,
+        "impact": 12,
+        "followup": 12
+      },
+      "status": "ready",
+      "source_id": "IND_METALS",
+      "baseline_n": 12,
+      "impact_n": 12,
+      "followup_n": 12,
+      "baseline_growth_pct": 39.59916666666667,
+      "impact_growth_pct": 8.273333333333333,
+      "followup_growth_pct": 11.575833333333334,
+      "growth_shift_pp": -31.325833333333335,
+      "followup_shift_pp": 3.3025,
+      "weakest_3mo_growth_pct": 5.176666666666667,
+      "rank_within_country_event": 3,
+      "compared_industries_n": 4,
+      "notes": [
+        "NAICS primary metals and NIC basic metals are approximate counterparts",
+        "2021 baseline influenced by COVID recovery; other geopolitical monetary and trade shocks overlap"
+      ]
+    },
+    {
+      "country": "IND",
+      "industry": "autos",
+      "event_id": "oil_collapse_2014",
+      "coverage": {
+        "baseline": 12,
+        "impact": 12,
+        "followup": 12
+      },
+      "status": "ready",
+      "source_id": "IND_AUTOS",
+      "baseline_n": 12,
+      "impact_n": 12,
+      "followup_n": 12,
+      "baseline_growth_pct": -0.9966666666666666,
+      "impact_growth_pct": 4.925,
+      "followup_growth_pct": -1.4458333333333333,
+      "growth_shift_pp": 5.921666666666667,
+      "followup_shift_pp": -6.370833333333334,
+      "weakest_3mo_growth_pct": 2.18,
+      "rank_within_country_event": 1,
+      "compared_industries_n": 4,
+      "notes": [
+        "NAICS motor vehicles and parts versus NIC motor vehicles trailers and semi-trailers",
+        "First 12 impact months standardized; price downturn continued beyond June 2015"
+      ]
+    },
+    {
+      "country": "IND",
+      "industry": "autos",
+      "event_id": "energy_spike_2022",
+      "coverage": {
+        "baseline": 12,
+        "impact": 12,
+        "followup": 12
+      },
+      "status": "ready",
+      "source_id": "IND_AUTOS",
+      "baseline_n": 12,
+      "impact_n": 12,
+      "followup_n": 12,
+      "baseline_growth_pct": 1237.35,
+      "impact_growth_pct": 21.0825,
+      "followup_growth_pct": 11.363333333333333,
+      "growth_shift_pp": -1216.2675,
+      "followup_shift_pp": -9.719166666666666,
+      "weakest_3mo_growth_pct": 2.8766666666666665,
+      "rank_within_country_event": 4,
+      "compared_industries_n": 4,
+      "notes": [
+        "NAICS motor vehicles and parts versus NIC motor vehicles trailers and semi-trailers",
+        "2021 baseline influenced by COVID recovery; other geopolitical monetary and trade shocks overlap"
+      ]
+    },
+    {
+      "country": "USA",
+      "industry": "food",
+      "event_id": "oil_collapse_2014",
+      "coverage": {
+        "baseline": 12,
+        "impact": 12,
+        "followup": 12
+      },
+      "status": "ready",
+      "source_id": "USA_FOOD",
+      "baseline_n": 12,
+      "impact_n": 12,
+      "followup_n": 12,
+      "baseline_growth_pct": 1.539596001981447,
+      "impact_growth_pct": 0.8069424670978579,
+      "followup_growth_pct": 2.4318510624346943,
+      "growth_shift_pp": -0.7326535348835891,
+      "followup_shift_pp": 1.6249085953368363,
+      "weakest_3mo_growth_pct": 0.10137632841433764,
+      "rank_within_country_event": 2,
+      "compared_industries_n": 4,
+      "notes": [
+        "Industry coverage may differ",
+        "First 12 impact months standardized; price downturn continued beyond June 2015"
+      ]
+    },
+    {
+      "country": "USA",
+      "industry": "food",
+      "event_id": "energy_spike_2022",
+      "coverage": {
+        "baseline": 12,
+        "impact": 12,
+        "followup": 12
+      },
+      "status": "ready",
+      "source_id": "USA_FOOD",
+      "baseline_n": 12,
+      "impact_n": 12,
+      "followup_n": 12,
+      "baseline_growth_pct": 0.378626406815936,
+      "impact_growth_pct": 1.458218191986833,
+      "followup_growth_pct": -1.577719800432964,
+      "growth_shift_pp": 1.079591785170897,
+      "followup_shift_pp": -3.0359379924197967,
+      "weakest_3mo_growth_pct": -0.08439458869276366,
+      "rank_within_country_event": 1,
+      "compared_industries_n": 4,
+      "notes": [
+        "Industry coverage may differ",
+        "2021 baseline influenced by COVID recovery; other geopolitical monetary and trade shocks overlap"
+      ]
+    },
+    {
+      "country": "USA",
+      "industry": "chemicals",
+      "event_id": "oil_collapse_2014",
+      "coverage": {
+        "baseline": 12,
+        "impact": 12,
+        "followup": 12
+      },
+      "status": "ready",
+      "source_id": "USA_CHEMICALS",
+      "baseline_n": 12,
+      "impact_n": 12,
+      "followup_n": 12,
+      "baseline_growth_pct": -2.9111759497168626,
+      "impact_growth_pct": 0.34962959505876096,
+      "followup_growth_pct": -0.5133801841916502,
+      "growth_shift_pp": 3.2608055447756237,
+      "followup_shift_pp": -0.8630097792504112,
+      "weakest_3mo_growth_pct": -0.15804834052367175,
+      "rank_within_country_event": 1,
+      "compared_industries_n": 4,
+      "notes": [
+        "US chemicals includes some pharmaceuticals while India NIC20 excludes NIC21",
+        "First 12 impact months standardized; price downturn continued beyond June 2015"
+      ]
+    },
+    {
+      "country": "USA",
+      "industry": "chemicals",
+      "event_id": "energy_spike_2022",
+      "coverage": {
+        "baseline": 12,
+        "impact": 12,
+        "followup": 12
+      },
+      "status": "ready",
+      "source_id": "USA_CHEMICALS",
+      "baseline_n": 12,
+      "impact_n": 12,
+      "followup_n": 12,
+      "baseline_growth_pct": 4.696061946969694,
+      "impact_growth_pct": -3.5574403536366477,
+      "followup_growth_pct": 1.556782081463672,
+      "growth_shift_pp": -8.253502300606343,
+      "followup_shift_pp": 5.11422243510032,
+      "weakest_3mo_growth_pct": -6.716151555737241,
+      "rank_within_country_event": 2,
+      "compared_industries_n": 4,
+      "notes": [
+        "US chemicals includes some pharmaceuticals while India NIC20 excludes NIC21",
+        "2021 baseline influenced by COVID recovery; other geopolitical monetary and trade shocks overlap"
+      ]
+    },
+    {
+      "country": "USA",
+      "industry": "metals",
+      "event_id": "oil_collapse_2014",
+      "coverage": {
+        "baseline": 12,
+        "impact": 12,
+        "followup": 12
+      },
+      "status": "ready",
+      "source_id": "USA_METALS",
+      "baseline_n": 12,
+      "impact_n": 12,
+      "followup_n": 12,
+      "baseline_growth_pct": 3.2563185937613595,
+      "impact_growth_pct": -2.84511772110759,
+      "followup_growth_pct": -5.485994976319587,
+      "growth_shift_pp": -6.10143631486895,
+      "followup_shift_pp": -2.6408772552119966,
+      "weakest_3mo_growth_pct": -7.752483289816577,
+      "rank_within_country_event": 4,
+      "compared_industries_n": 4,
+      "notes": [
+        "NAICS primary metals and NIC basic metals are approximate counterparts",
+        "First 12 impact months standardized; price downturn continued beyond June 2015"
+      ]
+    },
+    {
+      "country": "USA",
+      "industry": "metals",
+      "event_id": "energy_spike_2022",
+      "coverage": {
+        "baseline": 12,
+        "impact": 12,
+        "followup": 12
+      },
+      "status": "ready",
+      "source_id": "USA_METALS",
+      "baseline_n": 12,
+      "impact_n": 12,
+      "followup_n": 12,
+      "baseline_growth_pct": 13.003717872339326,
+      "impact_growth_pct": 4.4643282107906845,
+      "followup_growth_pct": -1.122233079017232,
+      "growth_shift_pp": -8.539389661548642,
+      "followup_shift_pp": -5.586561289807916,
+      "weakest_3mo_growth_pct": -0.3746745833576444,
+      "rank_within_country_event": 3,
+      "compared_industries_n": 4,
+      "notes": [
+        "NAICS primary metals and NIC basic metals are approximate counterparts",
+        "2021 baseline influenced by COVID recovery; other geopolitical monetary and trade shocks overlap"
+      ]
+    },
+    {
+      "country": "USA",
+      "industry": "autos",
+      "event_id": "oil_collapse_2014",
+      "coverage": {
+        "baseline": 12,
+        "impact": 12,
+        "followup": 12
+      },
+      "status": "ready",
+      "source_id": "USA_AUTOS",
+      "baseline_n": 12,
+      "impact_n": 12,
+      "followup_n": 12,
+      "baseline_growth_pct": 8.584240718438025,
+      "impact_growth_pct": 7.615638430799158,
+      "followup_growth_pct": 3.1259366874583177,
+      "growth_shift_pp": -0.9686022876388671,
+      "followup_shift_pp": -4.48970174334084,
+      "weakest_3mo_growth_pct": 4.682599479880849,
+      "rank_within_country_event": 3,
+      "compared_industries_n": 4,
+      "notes": [
+        "NAICS motor vehicles and parts versus NIC motor vehicles trailers and semi-trailers",
+        "First 12 impact months standardized; price downturn continued beyond June 2015"
+      ]
+    },
+    {
+      "country": "USA",
+      "industry": "autos",
+      "event_id": "energy_spike_2022",
+      "coverage": {
+        "baseline": 12,
+        "impact": 12,
+        "followup": 12
+      },
+      "status": "ready",
+      "source_id": "USA_AUTOS",
+      "baseline_n": 12,
+      "impact_n": 12,
+      "followup_n": 12,
+      "baseline_growth_pct": 34.58008310639219,
+      "impact_growth_pct": 13.374150051076658,
+      "followup_growth_pct": 3.5411650893799025,
+      "growth_shift_pp": -21.20593305531553,
+      "followup_shift_pp": -9.832984961696756,
+      "weakest_3mo_growth_pct": 8.092657718707908,
+      "rank_within_country_event": 4,
+      "compared_industries_n": 4,
+      "notes": [
+        "NAICS motor vehicles and parts versus NIC motor vehicles trailers and semi-trailers",
+        "2021 baseline influenced by COVID recovery; other geopolitical monetary and trade shocks overlap"
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "event_id": "oil_collapse_2014",
+      "industry": "food",
+      "india_minus_us_growth_shift_pp": 3.203486868216922
+    },
+    {
+      "event_id": "oil_collapse_2014",
+      "industry": "chemicals",
+      "india_minus_us_growth_shift_pp": -7.39747221144229
+    },
+    {
+      "event_id": "oil_collapse_2014",
+      "industry": "metals",
+      "india_minus_us_growth_shift_pp": 5.84393631486895
+    },
+    {
+      "event_id": "oil_collapse_2014",
+      "industry": "autos",
+      "india_minus_us_growth_shift_pp": 6.890268954305534
+    },
+    {
+      "event_id": "energy_spike_2022",
+      "industry": "food",
+      "india_minus_us_growth_shift_pp": -3.925425118504231
+    },
+    {
+      "event_id": "energy_spike_2022",
+      "industry": "chemicals",
+      "india_minus_us_growth_shift_pp": 0.5368356339396767
+    },
+    {
+      "event_id": "energy_spike_2022",
+      "industry": "metals",
+      "india_minus_us_growth_shift_pp": -22.786443671784696
+    },
+    {
+      "event_id": "energy_spike_2022",
+      "industry": "autos",
+      "india_minus_us_growth_shift_pp": -1195.0615669446845
+    }
+  ]
+}
