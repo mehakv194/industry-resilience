@@ -1,0 +1,248 @@
+{
+  "status": "audited",
+  "target_panels": 30,
+  "target_event_rows": 210,
+  "observed_panels": 30,
+  "panels": [
+    {
+      "country": "IND",
+      "industry_code": "10",
+      "n_months": 156,
+      "first": "2013-04-01",
+      "last": "2026-03-01",
+      "status": "observed"
+    },
+    {
+      "country": "IND",
+      "industry_code": "13",
+      "n_months": 156,
+      "first": "2013-04-01",
+      "last": "2026-03-01",
+      "status": "observed"
+    },
+    {
+      "country": "IND",
+      "industry_code": "20",
+      "n_months": 156,
+      "first": "2013-04-01",
+      "last": "2026-03-01",
+      "status": "observed"
+    },
+    {
+      "country": "IND",
+      "industry_code": "21",
+      "n_months": 156,
+      "first": "2013-04-01",
+      "last": "2026-03-01",
+      "status": "observed"
+    },
+    {
+      "country": "IND",
+      "industry_code": "22",
+      "n_months": 156,
+      "first": "2013-04-01",
+      "last": "2026-03-01",
+      "status": "observed"
+    },
+    {
+      "country": "IND",
+      "industry_code": "24",
+      "n_months": 156,
+      "first": "2013-04-01",
+      "last": "2026-03-01",
+      "status": "observed"
+    },
+    {
+      "country": "IND",
+      "industry_code": "25",
+      "n_months": 156,
+      "first": "2013-04-01",
+      "last": "2026-03-01",
+      "status": "observed"
+    },
+    {
+      "country": "IND",
+      "industry_code": "27",
+      "n_months": 156,
+      "first": "2013-04-01",
+      "last": "2026-03-01",
+      "status": "observed"
+    },
+    {
+      "country": "IND",
+      "industry_code": "28",
+      "n_months": 156,
+      "first": "2013-04-01",
+      "last": "2026-03-01",
+      "status": "observed"
+    },
+    {
+      "country": "IND",
+      "industry_code": "29",
+      "n_months": 156,
+      "first": "2013-04-01",
+      "last": "2026-03-01",
+      "status": "observed"
+    },
+    {
+      "country": "USA",
+      "industry_code": "10",
+      "n_months": 166,
+      "first": "2013-01-01",
+      "last": "2026-10-01",
+      "status": "observed"
+    },
+    {
+      "country": "USA",
+      "industry_code": "13",
+      "n_months": 166,
+      "first": "2013-01-01",
+      "last": "2026-10-01",
+      "status": "observed"
+    },
+    {
+      "country": "USA",
+      "industry_code": "20",
+      "n_months": 166,
+      "first": "2013-01-01",
+      "last": "2026-10-01",
+      "status": "observed"
+    },
+    {
+      "country": "USA",
+      "industry_code": "21",
+      "n_months": 166,
+      "first": "2013-01-01",
+      "last": "2026-10-01",
+      "status": "observed"
+    },
+    {
+      "country": "USA",
+      "industry_code": "22",
+      "n_months": 166,
+      "first": "2013-01-01",
+      "last": "2026-10-01",
+      "status": "observed"
+    },
+    {
+      "country": "USA",
+      "industry_code": "24",
+      "n_months": 166,
+      "first": "2013-01-01",
+      "last": "2026-10-01",
+      "status": "observed"
+    },
+    {
+      "country": "USA",
+      "industry_code": "25",
+      "n_months": 166,
+      "first": "2013-01-01",
+      "last": "2026-10-01",
+      "status": "observed"
+    },
+    {
+      "country": "USA",
+      "industry_code": "27",
+      "n_months": 166,
+      "first": "2013-01-01",
+      "last": "2026-10-01",
+      "status": "observed"
+    },
+    {
+      "country": "USA",
+      "industry_code": "28",
+      "n_months": 166,
+      "first": "2013-01-01",
+      "last": "2026-10-01",
+      "status": "observed"
+    },
+    {
+      "country": "USA",
+      "industry_code": "29",
+      "n_months": 166,
+      "first": "2013-01-01",
+      "last": "2026-10-01",
+      "status": "observed"
+    },
+    {
+      "country": "DEU",
+      "industry_code": "10",
+      "n_months": 165,
+      "first": "2013-01-01",
+      "last": "2026-09-01",
+      "status": "observed"
+    },
+    {
+      "country": "DEU",
+      "industry_code": "13",
+      "n_months": 165,
+      "first": "2013-01-01",
+      "last": "2026-09-01",
+      "status": "observed"
+    },
+    {
+      "country": "DEU",
+      "industry_code": "20",
+      "n_months": 165,
+      "first": "2013-01-01",
+      "last": "2026-09-01",
+      "status": "observed"
+    },
+    {
+      "country": "DEU",
+      "industry_code": "21",
+      "n_months": 165,
+      "first": "2013-01-01",
+      "last": "2026-09-01",
+      "status": "observed"
+    },
+    {
+      "country": "DEU",
+      "industry_code": "22",
+      "n_months": 165,
+      "first": "2013-01-01",
+      "last": "2026-09-01",
+      "status": "observed"
+    },
+    {
+      "country": "DEU",
+      "industry_code": "24",
+      "n_months": 165,
+      "first": "2013-01-01",
+      "last": "2026-09-01",
+      "status": "observed"
+    },
+    {
+      "country": "DEU",
+      "industry_code": "25",
+      "n_months": 165,
+      "first": "2013-01-01",
+      "last": "2026-09-01",
+      "status": "observed"
+    },
+    {
+      "country": "DEU",
+      "industry_code": "27",
+      "n_months": 165,
+      "first": "2013-01-01",
+      "last": "2026-09-01",
+      "status": "observed"
+    },
+    {
+      "country": "DEU",
+      "industry_code": "28",
+      "n_months": 165,
+      "first": "2013-01-01",
+      "last": "2026-09-01",
+      "status": "observed"
+    },
+    {
+      "country": "DEU",
+      "industry_code": "29",
+      "n_months": 165,
+      "first": "2013-01-01",
+      "last": "2026-09-01",
+      "status": "observed"
+    }
+  ]
+}

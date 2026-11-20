@@ -1,0 +1,26 @@
+{
+  "model": "AI adoption structural context",
+  "status": "descriptive",
+  "n_observations": 4,
+  "series": [
+    {
+      "country": "DEU",
+      "industry_code": "COUNTRY_LEVEL",
+      "indicator_id": "enterprise_ai_any",
+      "unit": "Percent of enterprises",
+      "definition": "German enterprises with 10+ workers using AI, Eurostat survey coverage",
+      "geography_level": "country / surveyed sectors",
+      "n_years": 4,
+      "first": 2021,
+      "last": 2025,
+      "first_value": 10.56,
+      "last_value": 25.97,
+      "value_change": 15.409999999999998
+    }
+  ],
+  "limitations": [
+    "Different AI measurement methods and geographic granularity MUST NOT be merged",
+    "Changes are in the raw indicator units; percentage-point only when indicator is adoption percent",
+    "No inference of AI-caused productivity or firm survival"
+  ]
+}

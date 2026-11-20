@@ -1,0 +1,67 @@
+[
+  {
+    "notebook": "00_data_audit.ipynb",
+    "status": "executed",
+    "executed_notebook": "reports/research/notebook_runs/00_data_audit.ipynb"
+  },
+  {
+    "notebook": "01_shock_profile.ipynb",
+    "status": "executed",
+    "executed_notebook": "reports/research/notebook_runs/01_shock_profile.ipynb"
+  },
+  {
+    "notebook": "02_dynamic_response.ipynb",
+    "status": "executed",
+    "executed_notebook": "reports/research/notebook_runs/02_dynamic_response.ipynb"
+  },
+  {
+    "notebook": "03_pca.ipynb",
+    "status": "executed",
+    "executed_notebook": "reports/research/notebook_runs/03_pca.ipynb"
+  },
+  {
+    "notebook": "04_kmeans.ipynb",
+    "status": "executed",
+    "executed_notebook": "reports/research/notebook_runs/04_kmeans.ipynb"
+  },
+  {
+    "notebook": "05_hierarchical.ipynb",
+    "status": "executed",
+    "executed_notebook": "reports/research/notebook_runs/05_hierarchical.ipynb"
+  },
+  {
+    "notebook": "06_knn.ipynb",
+    "status": "executed",
+    "executed_notebook": "reports/research/notebook_runs/06_knn.ipynb"
+  },
+  {
+    "notebook": "07_apriori.ipynb",
+    "status": "executed",
+    "executed_notebook": "reports/research/notebook_runs/07_apriori.ipynb"
+  },
+  {
+    "notebook": "08_random_forest.ipynb",
+    "status": "executed",
+    "executed_notebook": "reports/research/notebook_runs/08_random_forest.ipynb"
+  },
+  {
+    "notebook": "09_logistic_regression.ipynb",
+    "status": "executed",
+    "executed_notebook": "reports/research/notebook_runs/09_logistic_regression.ipynb"
+  },
+  {
+    "notebook": "10_isolation_forest.ipynb",
+    "status": "executed",
+    "executed_notebook": "reports/research/notebook_runs/10_isolation_forest.ipynb"
+  },
+  {
+    "notebook": "11_ai_transition.ipynb",
+    "status": "executed",
+    "executed_notebook": "reports/research/notebook_runs/11_ai_transition.ipynb"
+  },
+  {
+    "notebook": "12_tariff_exposure.ipynb",
+    "status": "executed",
+    "executed_notebook": "reports/research/notebook_runs/12_tariff_exposure.ipynb"
+  }
+]

@@ -1,0 +1,936 @@
+{
+  "model": "KMeans",
+  "status": "fitted",
+  "n_cases": 150,
+  "k": 3,
+  "silhouette": 0.8547215100698924,
+  "cluster_summary": [
+    {
+      "cluster": 0,
+      "delta_pp": 2.8079226343212254,
+      "shock_std_yoy": 19.925889651993405,
+      "negative_share": 0.5128052878052878,
+      "worst_yoy": -15.43798913578173,
+      "post_mean_yoy": 5.548150121440876
+    },
+    {
+      "cluster": 1,
+      "delta_pp": 1141.542756410256,
+      "shock_std_yoy": 3856.450892167334,
+      "negative_share": 0.4615384615384615,
+      "worst_yoy": -10.65,
+      "post_mean_yoy": 16.10782608695652
+    },
+    {
+      "cluster": 2,
+      "delta_pp": -29.97116666666668,
+      "shock_std_yoy": 38.06619682868253,
+      "negative_share": 0.6,
+      "worst_yoy": -99.4,
+      "post_mean_yoy": 1237.5358333333331
+    }
+  ],
+  "assignments": [
+    {
+      "country": "DEU",
+      "industry_code": "10",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "10",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "10",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "10",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "10",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "13",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "13",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "13",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "13",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "13",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "20",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "20",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "20",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "20",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "20",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "21",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "21",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "21",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "21",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "21",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "22",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "22",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "22",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "22",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "22",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "24",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "24",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "24",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "24",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "24",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "25",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "25",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "25",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "25",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "25",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "27",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "27",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "27",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "27",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "27",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "28",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "28",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "28",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "28",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "28",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "29",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "29",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "29",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "29",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "DEU",
+      "industry_code": "29",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "10",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "10",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "10",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "10",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "10",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "13",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "13",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "13",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "13",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "13",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "20",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "20",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "20",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "20",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "20",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "21",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "21",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "21",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "21",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "21",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "22",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "22",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "22",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "22",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "22",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "24",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "24",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "24",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "24",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "24",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "25",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "25",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "25",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "25",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "25",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "27",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "27",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "27",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "27",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "27",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "28",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "28",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "28",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "28",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "28",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "29",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "29",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "IND",
+      "industry_code": "29",
+      "event": "covid_disruption_2020",
+      "cluster": 2
+    },
+    {
+      "country": "IND",
+      "industry_code": "29",
+      "event": "supply_chain_2021",
+      "cluster": 1
+    },
+    {
+      "country": "IND",
+      "industry_code": "29",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "10",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "10",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "10",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "10",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "10",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "13",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "13",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "13",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "13",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "13",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "20",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "20",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "20",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "20",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "20",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "21",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "21",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "21",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "21",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "21",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "22",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "22",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "22",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "22",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "22",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "24",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "24",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "24",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "24",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "24",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "25",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "25",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "25",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "25",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "25",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "27",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "27",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "27",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "27",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "27",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "28",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "28",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "28",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "28",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "28",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "29",
+      "event": "oil_collapse",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "29",
+      "event": "us_china_tariffs_2018",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "29",
+      "event": "covid_disruption_2020",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "29",
+      "event": "supply_chain_2021",
+      "cluster": 0
+    },
+    {
+      "country": "USA",
+      "industry_code": "29",
+      "event": "energy_surge_2022",
+      "cluster": 0
+    }
+  ],
+  "limitation": "Descriptive segments. Cluster numbers are not inherently ordered risk categories."
+}

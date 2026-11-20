@@ -1,0 +1,5 @@
+{
+  "model": "Tariff exposure descriptive audit",
+  "status": "skipped",
+  "reason": "No verified observed USITC aligned trade/duty dataset at data/processed/tariff_exposure.csv"
+}

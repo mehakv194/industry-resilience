@@ -1,0 +1,360 @@
+{
+  "model": "Apriori",
+  "status": "fitted",
+  "n_cases": 200,
+  "min_support": 0.12,
+  "n_frequent_itemsets": 60,
+  "rules": [
+    {
+      "antecedent": [
+        "event=supply_chain_2021"
+      ],
+      "consequent": [
+        "slowdown=no",
+        "volatility=high"
+      ],
+      "support": 0.13,
+      "confidence": 0.8666666666666667,
+      "lift": 3.611111111111111
+    },
+    {
+      "antecedent": [
+        "event=supply_chain_2021",
+        "volatility=high"
+      ],
+      "consequent": [
+        "slowdown=no"
+      ],
+      "support": 0.13,
+      "confidence": 0.9629629629629629,
+      "lift": 2.048857368006304
+    },
+    {
+      "antecedent": [
+        "event=supply_chain_2021"
+      ],
+      "consequent": [
+        "slowdown=no"
+      ],
+      "support": 0.14,
+      "confidence": 0.9333333333333335,
+      "lift": 1.9858156028368799
+    },
+    {
+      "antecedent": [
+        "event=supply_chain_2021",
+        "slowdown=no"
+      ],
+      "consequent": [
+        "volatility=high"
+      ],
+      "support": 0.13,
+      "confidence": 0.9285714285714285,
+      "lift": 1.857142857142857
+    },
+    {
+      "antecedent": [
+        "event=supply_chain_2021"
+      ],
+      "consequent": [
+        "volatility=high"
+      ],
+      "support": 0.135,
+      "confidence": 0.9000000000000001,
+      "lift": 1.8000000000000003
+    },
+    {
+      "antecedent": [
+        "country=DEU",
+        "slowdown=yes"
+      ],
+      "consequent": [
+        "negative_share=high"
+      ],
+      "support": 0.145,
+      "confidence": 0.8055555555555556,
+      "lift": 1.7323775388291518
+    },
+    {
+      "antecedent": [
+        "event=covid_disruption_2020"
+      ],
+      "consequent": [
+        "volatility=high"
+      ],
+      "support": 0.125,
+      "confidence": 0.8333333333333334,
+      "lift": 1.6666666666666667
+    },
+    {
+      "antecedent": [
+        "country=USA",
+        "slowdown=no"
+      ],
+      "consequent": [
+        "negative_share=low"
+      ],
+      "support": 0.16,
+      "confidence": 0.888888888888889,
+      "lift": 1.6614745586708204
+    },
+    {
+      "antecedent": [
+        "country=USA",
+        "negative_share=low"
+      ],
+      "consequent": [
+        "slowdown=no"
+      ],
+      "support": 0.16,
+      "confidence": 0.7804878048780488,
+      "lift": 1.6606123508043593
+    },
+    {
+      "antecedent": [
+        "country=DEU",
+        "negative_share=low"
+      ],
+      "consequent": [
+        "slowdown=no"
+      ],
+      "support": 0.12,
+      "confidence": 0.7741935483870968,
+      "lift": 1.6472203157172272
+    },
+    {
+      "antecedent": [
+        "country=USA",
+        "slowdown=yes"
+      ],
+      "consequent": [
+        "volatility=low"
+      ],
+      "support": 0.14,
+      "confidence": 0.823529411764706,
+      "lift": 1.647058823529412
+    },
+    {
+      "antecedent": [
+        "event=covid_disruption_2020"
+      ],
+      "consequent": [
+        "slowdown=yes"
+      ],
+      "support": 0.13,
+      "confidence": 0.8666666666666667,
+      "lift": 1.6352201257861636
+    },
+    {
+      "antecedent": [
+        "country=USA",
+        "negative_share=high"
+      ],
+      "consequent": [
+        "slowdown=yes"
+      ],
+      "support": 0.125,
+      "confidence": 0.8620689655172414,
+      "lift": 1.6265452179570592
+    },
+    {
+      "antecedent": [
+        "slowdown=yes",
+        "volatility=high"
+      ],
+      "consequent": [
+        "negative_share=high"
+      ],
+      "support": 0.195,
+      "confidence": 0.75,
+      "lift": 1.6129032258064515
+    },
+    {
+      "antecedent": [
+        "negative_share=low",
+        "volatility=high"
+      ],
+      "consequent": [
+        "slowdown=no"
+      ],
+      "support": 0.195,
+      "confidence": 0.75,
+      "lift": 1.595744680851064
+    },
+    {
+      "antecedent": [
+        "country=USA",
+        "slowdown=yes"
+      ],
+      "consequent": [
+        "negative_share=high"
+      ],
+      "support": 0.125,
+      "confidence": 0.7352941176470588,
+      "lift": 1.581277672359266
+    },
+    {
+      "antecedent": [
+        "country=USA",
+        "negative_share=low"
+      ],
+      "consequent": [
+        "volatility=low"
+      ],
+      "support": 0.16,
+      "confidence": 0.7804878048780488,
+      "lift": 1.5609756097560976
+    },
+    {
+      "antecedent": [
+        "country=IND"
+      ],
+      "consequent": [
+        "volatility=high"
+      ],
+      "support": 0.23,
+      "confidence": 0.7666666666666667,
+      "lift": 1.5333333333333334
+    },
+    {
+      "antecedent": [
+        "negative_share=high",
+        "volatility=high"
+      ],
+      "consequent": [
+        "slowdown=yes"
+      ],
+      "support": 0.195,
+      "confidence": 0.8125000000000001,
+      "lift": 1.5330188679245285
+    },
+    {
+      "antecedent": [
+        "slowdown=no",
+        "volatility=high"
+      ],
+      "consequent": [
+        "negative_share=low"
+      ],
+      "support": 0.195,
+      "confidence": 0.8125000000000001,
+      "lift": 1.518691588785047
+    },
+    {
+      "antecedent": [
+        "country=USA"
+      ],
+      "consequent": [
+        "volatility=low"
+      ],
+      "support": 0.265,
+      "confidence": 0.7571428571428572,
+      "lift": 1.5142857142857145
+    },
+    {
+      "antecedent": [
+        "slowdown=yes"
+      ],
+      "consequent": [
+        "negative_share=high"
+      ],
+      "support": 0.36,
+      "confidence": 0.6792452830188679,
+      "lift": 1.4607425441265975
+    },
+    {
+      "antecedent": [
+        "negative_share=high"
+      ],
+      "consequent": [
+        "slowdown=yes"
+      ],
+      "support": 0.36,
+      "confidence": 0.7741935483870968,
+      "lift": 1.4607425441265975
+    },
+    {
+      "antecedent": [
+        "negative_share=low"
+      ],
+      "consequent": [
+        "slowdown=no"
+      ],
+      "support": 0.365,
+      "confidence": 0.6822429906542056,
+      "lift": 1.451580831179161
+    },
+    {
+      "antecedent": [
+        "slowdown=no"
+      ],
+      "consequent": [
+        "negative_share=low"
+      ],
+      "support": 0.365,
+      "confidence": 0.7765957446808511,
+      "lift": 1.451580831179161
+    },
+    {
+      "antecedent": [
+        "country=IND",
+        "negative_share=low"
+      ],
+      "consequent": [
+        "volatility=high"
+      ],
+      "support": 0.125,
+      "confidence": 0.7142857142857143,
+      "lift": 1.4285714285714286
+    },
+    {
+      "antecedent": [
+        "country=DEU",
+        "negative_share=high"
+      ],
+      "consequent": [
+        "slowdown=yes"
+      ],
+      "support": 0.145,
+      "confidence": 0.7435897435897435,
+      "lift": 1.4029995162070632
+    },
+    {
+      "antecedent": [
+        "country=USA",
+        "slowdown=no"
+      ],
+      "consequent": [
+        "volatility=low"
+      ],
+      "support": 0.125,
+      "confidence": 0.6944444444444444,
+      "lift": 1.3888888888888888
+    },
+    {
+      "antecedent": [
+        "country=IND",
+        "slowdown=yes"
+      ],
+      "consequent": [
+        "volatility=high"
+      ],
+      "support": 0.125,
+      "confidence": 0.6944444444444444,
+      "lift": 1.3888888888888888
+    },
+    {
+      "antecedent": [
+        "negative_share=high",
+        "volatility=low"
+      ],
+      "consequent": [
+        "slowdown=yes"
+      ],
+      "support": 0.165,
+      "confidence": 0.7333333333333334,
+      "lift": 1.3836477987421385
+    }
+  ],
+  "limitation": "Descriptive co-occurrence with a small number of non-independent country-industry-event cases; not cause, prediction or statistical significance."
+}

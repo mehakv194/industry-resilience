@@ -1,0 +1,43 @@
+{
+  "model": "PCA",
+  "status": "fitted",
+  "n_cases": 150,
+  "explained_variance_ratio": [
+    0.40405662930708175,
+    0.32471475450765247,
+    0.188260660138789
+  ],
+  "loadings": [
+    {
+      "variable": "delta_pp",
+      "PC1": 0.6915568894500014,
+      "PC2": -0.14119221030201656,
+      "PC3": 0.02133949843652806
+    },
+    {
+      "variable": "shock_std_yoy",
+      "PC1": 0.6777335817871295,
+      "PC2": -0.20658184692002285,
+      "PC3": 0.04174491118421192
+    },
+    {
+      "variable": "negative_share",
+      "PC1": -0.1419195040618914,
+      "PC2": -0.4257179785809936,
+      "PC3": 0.7968919450598008
+    },
+    {
+      "variable": "worst_yoy",
+      "PC1": 0.17389853160978963,
+      "PC2": 0.6673023002131188,
+      "PC3": 0.02295879533977803
+    },
+    {
+      "variable": "post_mean_yoy",
+      "PC1": -0.10974705391495512,
+      "PC2": -0.5575486912515688,
+      "PC3": -0.6018622016807951
+    }
+  ],
+  "limitation": "Exploratory low-sample descriptive decomposition, not evidence of causal factors."
+}

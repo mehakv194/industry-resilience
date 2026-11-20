@@ -1,0 +1,57 @@
+{
+  "model": "Jorda-style exploratory local projections",
+  "status": "fitted",
+  "coefficients": [
+    {
+      "horizon_months": 0,
+      "coef": 0.05283115874748135,
+      "standard_error": 0.1496467788554127,
+      "ci95_low": -0.24047113821155763,
+      "ci95_high": 0.3461334557065203,
+      "p_value": 0.7240591548087587,
+      "n_rows": 4840,
+      "n_unique_months": 165
+    },
+    {
+      "horizon_months": 3,
+      "coef": 0.4684593933811545,
+      "standard_error": 0.3441235726874506,
+      "ci95_low": -0.20601041531750008,
+      "ci95_high": 1.142929202079809,
+      "p_value": 0.17341525518434586,
+      "n_rows": 4750,
+      "n_unique_months": 162
+    },
+    {
+      "horizon_months": 6,
+      "coef": -0.030237087928639543,
+      "standard_error": 0.0705475358841176,
+      "ci95_low": -0.16850771745955712,
+      "ci95_high": 0.10803354160227802,
+      "p_value": 0.6682100736530796,
+      "n_rows": 4660,
+      "n_unique_months": 159
+    },
+    {
+      "horizon_months": 9,
+      "coef": 0.3127401989831957,
+      "standard_error": 0.29011032514512014,
+      "ci95_low": -0.25586558984444463,
+      "ci95_high": 0.8813459878108361,
+      "p_value": 0.2810318048743665,
+      "n_rows": 4570,
+      "n_unique_months": 156
+    },
+    {
+      "horizon_months": 12,
+      "coef": -2.0019819364741904,
+      "standard_error": 1.8225314999661923,
+      "ci95_low": -5.57407803709769,
+      "ci95_high": 1.5701141641493095,
+      "p_value": 0.27200272068362774,
+      "n_rows": 4480,
+      "n_unique_months": 153
+    }
+  ],
+  "limitation": "Unidentified association; oil price mixes supply and demand origins; omitted macro confounding; overlapping YoY growth; not a firm survival prediction."
+}
