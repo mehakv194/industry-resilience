@@ -6,15 +6,15 @@ import {
   ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from 'recharts'
 import {
-  cases, countries, delta, events, getCase, industries, industryName, period, range, timeline,
+  caseIndustries, cases, countries, delta, events, getCase, industryName, period, range, timeline,
   value, windowNames, windows, type Case, type Event,
 } from './data'
 import {
-  CardTitle, Filters, Insight, Methodology, Metrics, Select, SourceNote, query,
+  CardTitle, Filters, Insight, Methodology, Metrics, Select, SourceNote, StructuralResearch, query,
   selectedCountries, useSelection, type Selection,
 } from './shared'
 
-const colors = { IND: '#126F8B', USA: '#E97661', brent: '#936217' }
+const colors = { IND: '#126F8B', USA: '#E97661', DEU: '#7355a2', brent: '#936217' }
 type Window = typeof windows[number] | 'all'
 const allWindows: [string, string][] = [['all', 'All windows'], ...windows.map(w => [w, windowNames[w]] as [string, string])]
 
@@ -94,7 +94,7 @@ function Ranking({ selection }: { selection: Selection }) {
     <div className="auto-grid">{selectedCountries(selection).map(country => {
       const rows = cases.filter(row => row.event_id === selection.event && row.country === country)
         .sort((a, b) => (a.rank_within_country_event ?? 99) - (b.rank_within_country_event ?? 99))
-      return <table key={country}><caption>{countries[country]} · {rows.filter(r => r.status === 'ready').length} of {industries.length} ranked</caption>
+      return <table key={country}><caption>{countries[country]} · {rows.filter(r => r.eligible).length} of {caseIndustries(selection.event).length} ranked</caption>
         <thead><tr><th scope="col">Rank</th><th scope="col">Industry</th><th scope="col">Shift</th><th scope="col">Status</th></tr></thead>
         <tbody>{rows.map(row => <tr className={row.industry === selection.industry ? 'selected-row' : ''} key={row.industry}>
           <td>{row.rank_within_country_event ?? '—'}</td><th scope="row">{industryName(row.industry)}</th>
@@ -130,6 +130,8 @@ function Comparison({ selection }: { selection: Selection }) {
     <WindowComparison rows={rows} labels={['Case A', 'Case B']} />
     <p>{difference !== null ? `Case A minus Case B impact shift: ${value(difference)}.` : comparable
       ? 'Insufficient data to calculate a difference.' : 'Keep the same industry and event, or change only industry or shock within one country, to calculate a difference.'}</p>
+    {(a.event !== b.event || rows.some(row => row?.status === 'partial')) &&
+      <p className="muted">The estimates use the observed months within each case’s configured windows. Check coverage and dates before interpreting the difference.</p>}
   </section>
 }
 
@@ -141,15 +143,18 @@ export function CaseStudies() {
   return <>
     <header className="page-header"><h1>Case Study Analysis</h1><p>Explore how industries responded to economic shocks.</p></header>
     <section aria-label="Case study filters" className="card filter-grid">
-      <Filters selection={selection} update={update}>
-        <Select label="Chart period" value={window} options={allWindows} change={v => setWindow(v as Window)} />
+      <Filters selection={selection} update={next => { if (next.event !== selection.event) setWindow('all'); update(next) }}>
+        <Select label="Chart period" value={window} options={allWindows.filter(([id]) => id !== 'followup' || event.followup_start)} change={v => setWindow(v as Window)} />
       </Filters>
     </section>
     <Metrics rows={rows} event={event} />
+    <p className="muted">{event.status} · {event.notes}</p>
+    {event.event_id.includes('tariff') && <p className="muted">These charts show production during the tariff window. An aligned industry-level duties and import series is unavailable. <a href="https://www.usitc.gov/applications/dataweb/about">USITC DataWeb</a></p>}
     <TimelineCharts selection={selection} event={event} window={window} />
     <Ranking selection={selection} />
     <Insight selection={selection} />
     <Comparison selection={selection} />
+    <StructuralResearch />
     <Methodology />
   </>
 }
@@ -181,7 +186,7 @@ export function Calculator() {
       <div className="result-values">{rows.map((row, i) => <div key={chosen[i]}>
         <strong className="metric-number">{value(row?.growth_shift_pp)}</strong><p>{countries[chosen[i]]} impact growth shift</p>
       </div>)}</div>
-      <p>{difference == null ? 'Insufficient coverage for the matched country comparison.' :
+      <p>{difference == null ? 'Insufficient coverage for the India–US comparison.' :
         `India minus US impact growth shift: ${value(difference)}.`}</p>
       <Link className="button" to={`/case-studies?${query(submitted)}`}>View supporting case study <ArrowRight size={16} /></Link>
     </section>

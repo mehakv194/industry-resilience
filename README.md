@@ -108,3 +108,25 @@ That verification requires the original raw files on disk; a clone containing on
 The [roadmap](docs/phases/IMPLEMENTATION_ROADMAP.md) describes phases 00–07: foundation, sources, harmonization, warehouse, analysis, mining, dashboard, and publication. Its two country-industry extracts remain outstanding: Prompt 02 permits GDP growth as the first acquisition demonstration. Further source work is required before industry analysis. No Phase 02 harmonization has begun. The [risk-indicator design](docs/methodology/RISK_INDICATOR_DESIGN.md) defines future evidence needs without calculating a score.
 
 Planned deliverables for the original roadmap include a dashboard, notebooks, a reproducible warehouse, and a research report.
+
+## Expanded research panel
+
+The expanded dashboard adds Germany, ten ISIC-aligned manufacturing divisions, seven documented windows and a separate annual AI adoption module. It includes 4,870 observed production-growth values and 200 eligible cases out of 210. The original 12-month studies remain available in the dashboard. [Research report](reports/research/REPORT.md) · [Coverage](reports/research/event_coverage.json) · [Notebook run status](reports/research/notebook_runs/statuses.json)
+
+Reproduce the research from the checked-in snapshot and notebook sources:
+
+```sh
+python -m pip install -r research_expansion/requirements-research.txt
+python -m ipykernel install --user --name python3
+```
+
+From the repository root, put `src` on `PYTHONPATH` (`$env:PYTHONPATH = 'src'` in PowerShell or `export PYTHONPATH=src` in a POSIX shell). Then run:
+
+```sh
+python research_expansion/scripts/build_panel.py --from-report
+python research_expansion/scripts/run_notebooks.py --start 0 --end 12
+python research_expansion/scripts/verify_report.py
+npm --prefix web run build
+```
+
+Use `build_panel.py --fetch-missing` to download absent source files into `.tmp/` and rebuild from the raw files. Live source refreshes can have revised values. The committed panel and source manifest preserve the snapshot used here. Research references, hypotheses, data contracts and the methodological scope are in the [expansion docs](research_expansion/docs/).

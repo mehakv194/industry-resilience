@@ -44,3 +44,11 @@ The supplied Phase 5 brief authorized creating the React app in web/. This resol
 TypeScript and the production build passed. Browser smoke covered 2014 motor vehicles India versus US (+6.89 pp), 2022 US food with the impact-only chart and IPG311N source, and submitting the calculator and following its preselected case-study link. The narrow case-study layout had no horizontal overflow. The 2022 motor-vehicle highlight shows its baseline means so the magnitude of the pandemic-era base effect is visible.
 
 Netlify is configured. A linked project and deployment token were unavailable, so no live deployment was verified. Vite reports a large client bundle warning (905 kB minified, 239 kB gzip). Next: link the intended Netlify site and verify the deployed routes.
+
+## Research expansion
+
+Reused the two extracted research packs and applied the newer seven-event calendar. Normalized 30 real country–industry panels and 4,870 observed production months, with Fed ISIC4 and Eurostat NSA indexes converted by exact calendar lag. Added Eurostat German AI survey observations and World Bank European gas context. Preserved the earlier energy data and fixed-window metrics.
+
+Executed notebooks 00–12. The historical profiles yielded 200 eligible cases out of 210. India lacks seven of eight 2026 tariff impact months, so ten shifts are withheld. The tariff notebook executed its skipped-exposure path because the verified imports/duties extract was unavailable. All four classifier/dummy results, five horizon regressions and the other five descriptive model outputs are exported.
+
+Expanded the existing React filters, charts, rankings, calculator and methods without adding routes or dependencies. Browser smoke verified Germany chemicals 2022 (-8.21 pp), India 2026 tariffs (1/8 with unavailable metrics), the preserved original 2014 comparison (+6.89 pp) and the expanded calculator. TypeScript and build passed. The compressed JS is about 304 kB. Netlify configuration is unchanged and live verification remains pending.
