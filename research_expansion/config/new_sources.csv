@@ -1,0 +1,17 @@
+source_id,role,url,frequency,coverage,access_status,implementation_note
+who_covid,timeline,https://www.who.int/europe/emergencies/situations/covid-19/,event,global,verified_page,March 11 2020 pandemic characterization
+ustr_2018,policy_history,https://www.usitc.gov/press_room/news_release/2023/er0315_63679.htm,annual_historical,USA,verified_page,Retrospective Section 232 and 301 tariff study
+usitc_trade,trade_statistics,https://www.usitc.gov/applications/dataweb/about,monthly,USA,verified_page,Query HTS or NAICS trade flow and partner country; download may require interactive configuration
+usitc_tariffs,tariff_database,https://dataweb.usitc.gov/tariff/database,tariff_versioned,USA,verified_page,Record HTS vintage and effective rates separately from industry output
+whitehouse_2025,policy_trigger,https://www.whitehouse.gov/presidential-actions/2025/04/regulating-imports-with-a-reciprocal-tariff-to-rectify-trade-practices-that-contribute-to-large-and-persistent-annual-united-states-goods-trade-deficits/,event,USA,verified_page,April 2 2025 announcement not permanent rate
+crs_2026,policy_transition,https://www.everycrsreport.com/reports/R49481.html,event,USA,verified_report_copy,October 8 2026 CRS report on 2026 tariff regime revisions
+nyfed_gscpi,pressure_index,https://www.newyorkfed.org/research/policy/gscpi,monthly,global,verified_page,Supply-chain pressure composite; contextual explanatory covariate
+worldbank_commodities,energy_price,https://www.worldbank.org/en/research/commodity-markets,monthly,global,verified_page,Brent and natural gas price context
+fed_g17,production_index,https://www.federalreserve.gov/releases/g17/download.htm,monthly,USA,previous_pack_source,Prefer ISIC aligned workbook where available
+eurostat_sts,production_index,https://ec.europa.eu/eurostat/databrowser/view/sts_inpr_m/default/table?lang=en,monthly,Germany,verified_page,Validate NACE codes and current base year
+india_iip,production_growth,https://measure.thisindianlife.today/data/iip-industries-2011/,monthly,India,previous_pack_source,Third party structured MoSPI-derived YoY series verify against official IIP
+ai_eurostat,ai_adoption,https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Use_of_artificial_intelligence_in_enterprises,annual,EU/Germany,verified_page,Survey AI adoption not a harmonized India US Germany manufacturing dataset
+ai_jrc,ai_adoption,https://joint-research-centre.ec.europa.eu/jrc-news-and-updates/ai-adoption-more-doubles-almost-every-eu-strategic-sector-2026-10-14_en,annual,EU,verified_page,EU strategic industries annual AI adoption change
+ai_stanford,ai_investment,https://hai.stanford.edu/ai-index/2026-ai-index-report/economy,annual,USA/global/Europe,verified_page,Investment is not industry AI adoption or productivity
+robot_ifr,industrial_robots,https://ifr.org/ifr-press-releases/news/global-robot-demand-in-factories-doubles-over-10-years,annual,India/USA/Germany,verified_page,Some public country/sector summary; fine detail may be licensed
+iea_ai_energy,context,https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary,annual/global,global,verified_page,Energy demand outlook is scenario not observed industry shock

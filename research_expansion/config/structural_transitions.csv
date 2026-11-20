@@ -1,0 +1,2 @@
+transition_id,reference_start,reference_end,analysis_start,analysis_end,status,metric_source,notes
+ai_diffusion,2021,2022,2023,2026,structural_context_only,Eurostat isoc_eb_ai and Stanford 2026 AI Index,Annual adoption or investment context only; not an industrial production shock and not automatically comparable across countries

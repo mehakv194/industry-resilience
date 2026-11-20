@@ -1,0 +1,8 @@
+event,baseline_start,baseline_end,shock_start,shock_end,post_start,post_end,status,category,training_eligible,exposure_signal,note
+oil_collapse,2013-01,2014-06,2014-07,2016-02,2016-03,2017-12,core,energy_price,true,brent_price_change,Existing event; descriptive oil price decline. Same unit: production YoY percent.
+us_china_tariffs_2018,2016-01,2018-06,2018-07,2019-12,2020-01,2020-02,core,trade_policy,true,usitc_tariff_duties_imports_optional,Historical 2018 Section 301 trade war; follow-up only 2 months before COVID. Do not report clean recovery.
+covid_disruption_2020,2018-01,2019-12,2020-03,2020-12,2021-01,2021-12,core,pandemic,true,who_event_dates_and_production,WHO characterized pandemic Mar 11 2020; 2021 YoY rebound has base effects; no simplistic recovery causality.
+supply_chain_2021,2018-01,2019-12,2021-01,2022-01,2022-02,2023-12,secondary,supply_chain,false,nyfed_gscpi,Supply disruption overlaps COVID and later 2022 energy shock. Descriptive only; use NY Fed GSCPI.
+energy_surge_2022,2019-01,2019-12,2022-02,2022-12,2023-01,2024-12,core,energy_price,true,brent_and_worldbank_gas,Existing event; 2019 pre-COVID baseline with 2021 alternative sensitivity. Overlaps supply chain crisis.
+tariff_wave_2025,2023-01,2024-12,2025-04,2026-01,,,provisional,trade_policy,false,usitc_trade_and_tariff_series_optional,April 2025 announced regime changed after February 20 2026 Supreme Court ruling. No complete recovery observed.
+tariff_regime_2026,2024-01,2025-12,2026-03,2026-10,,,exploratory,trade_policy,false,usitc_tariff_policy_vintage,Not a single flat tariff; Section 122 until July 24 2026 then other authorities. Months require per-country/industry observed values; many India series unavailable.

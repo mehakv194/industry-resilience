@@ -1,0 +1,11 @@
+industry_code,industry_name,india_nic2008,germany_nace_r2,us_preferred
+10,Food products,10,C10,Fed ISIC4 10
+13,Textiles,13,C13,Fed ISIC4 13
+20,Chemicals,20,C20,Fed ISIC4 20
+21,Pharmaceuticals,21,C21,Fed ISIC4 21
+22,Rubber and plastics,22,C22,Fed ISIC4 22
+24,Basic metals,24,C24,Fed ISIC4 24
+25,Fabricated metal products,25,C25,Fed ISIC4 25
+27,Electrical equipment,27,C27,Fed ISIC4 27
+28,Machinery and equipment n.e.c.,28,C28,Fed ISIC4 28
+29,Motor vehicles,29,C29,Fed ISIC4 29
