@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Calculator, CaseStudies } from './analysis'
-import { Overview } from './shared'
+import { Overview } from './overview'
 import './style.css'
 
 function App() {

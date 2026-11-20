@@ -1,13 +1,13 @@
-import { ArrowDownRight, ArrowRight, ArrowUpRight, ChartNoAxesCombined, Factory, Globe2, Waves } from 'lucide-react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { ArrowUpRight } from 'lucide-react'
+import { useSearchParams } from 'react-router-dom'
 import type { ReactNode } from 'react'
 import dynamicResponse from '../../reports/research/models/dynamic_response.json'
 import logistic from '../../reports/research/models/logistic_regression.json'
 import forest from '../../reports/research/models/random_forest.json'
 import knn from '../../reports/research/models/knn.json'
 import {
-  activeEvents, ai, caseCountries, caseIndustries, cases, countries, coverage, delta, events, findings, getCase,
-  industryCode, industryName, isLegacy, period, range, readyCases, researchEvents, sources, value, windowNames, windows,
+  activeEvents, ai, caseCountries, caseIndustries, countries,
+  industryCode, isLegacy, period, range, sources, value, windowNames, windows,
   type Case, type Country, type Event,
 } from './data'
 
@@ -128,7 +128,7 @@ export function Metrics({ rows, event }: { rows: (Case | undefined)[]; event: Ev
       <span className={row?.status === 'ready' ? 'status ready' : 'status'}>{row?.status ?? 'unavailable'}</span>
     </div>
     <div className="metric-number">{value(row?.growth_shift_pp)}</div>
-    <p className="muted">Impact shift in YoY growth</p>
+    <p className="muted">Change in the annual growth rate</p>
     <dl>{windows.map(window => <div key={window}>
       <dt title={event[`${window}_start`] ? range(event[`${window}_start`], event[`${window}_end`]) : undefined}>
         {windowNames[window]} <small>{row?.expected[window] ? `${row.coverage[window]}/${row.expected[window]}` : 'No window'}</small></dt>
@@ -136,7 +136,7 @@ export function Metrics({ rows, event }: { rows: (Case | undefined)[]; event: Ev
     </div>)}
       <div><dt>Follow-up shift</dt><dd>{value(row?.followup_shift_pp)}</dd></div>
       <div><dt>Weakest 3-month mean</dt><dd>{value(row?.weakest_3mo_growth_pct, '%', false)}</dd></div>
-      <div><dt>Industry rank</dt><dd>{row?.rank_within_country_event ? `${row.rank_within_country_event} of ${row.compared_industries_n}` : 'Unavailable'}</dd></div>
+      <div><dt>Position among industries</dt><dd>{row?.rank_within_country_event ? `${row.rank_within_country_event} of ${row.compared_industries_n}` : 'Unavailable'}</dd></div>
       {!isLegacy(event.event_id) && <>
         <div><dt>Impact volatility</dt><dd>{value(row?.volatility, 'pp', false)}</dd></div>
         <div><dt>Growth normalization</dt><dd>{row?.normalization ? period(row.normalization) : 'Unavailable'}</dd></div>
@@ -147,80 +147,6 @@ export function Metrics({ rows, event }: { rows: (Case | undefined)[]; event: Ev
       : 'At least six observations in both baseline and impact are required.'}</p>}
     {row && <SourceNote id={row.source_id} />}
   </article>)}</div>
-}
-
-export function Overview() {
-  const [selection, update] = useSelection('IND')
-  const scope = [
-    ['Countries', new Set(readyCases.map(row => row.country)).size, Globe2],
-    ['Industries', new Set(readyCases.map(row => row.industry)).size, Factory],
-    ['Expanded shock windows', researchEvents.length, Waves],
-    ['Production coverage', coverage[0] && coverage[1] ? `${period(coverage[0])} – ${period(coverage[1])}` : 'Unavailable', ChartNoAxesCombined],
-  ] as const
-  const highlights = activeEvents.flatMap(event => findings.filter(f => f.event_id === event.event_id)
-    .sort((a, b) => Math.abs(b.india_minus_us_growth_shift_pp ?? 0) - Math.abs(a.india_minus_us_growth_shift_pp ?? 0)).slice(0, 1))
-  return <>
-    <header className="hero">
-      <h1>Understanding<br />industry resilience.</h1>
-      <p>How industries respond to economic shocks, across countries and time.</p>
-      <div className="flex flex-wrap gap-3"><Link className="button primary" to="/case-studies">Explore case studies <ArrowRight size={17} /></Link>
-        <Link className="button" to="/calculator">Risk calculator</Link></div>
-    </header>
-    <section aria-label="Research scope" className="scope-grid">{scope.map(([label, stat, Icon]) => <article key={label} className="card scope">
-      <Icon size={18} /><span>{label}</span><strong>{stat}</strong>
-    </article>)}</section>
-    <section><CardTitle title="Key findings" detail="Largest absolute India–US growth-shift gap in each shock" />
-      <div className="auto-grid">{highlights.map((row, i) => {
-        const event = events.find(e => e.event_id === row.event_id)!
-        const india = getCase(row.event_id, row.industry, 'IND')
-        const us = getCase(row.event_id, row.industry, 'USA')
-        return <article className={i === 0 ? 'card feature' : 'card finding'} key={row.event_id}>
-          <p>{event.event}</p><h3>{industryName(row.industry)}</h3>
-          <div className="metric-number">{value(row.india_minus_us_growth_shift_pp)}</div>
-          <p>India minus US impact growth shift</p>
-          <p>Baseline mean YoY growth: {value(india?.baseline_growth_pct, '%', false)} in India and {value(us?.baseline_growth_pct, '%', false)} in the US.</p>
-          <Link to={`/case-studies?${query({ event: row.event_id, industry: row.industry, country: 'compare' })}`}>View analysis <ArrowRight size={16} /></Link>
-        </article>
-      })}</div>
-    </section>
-    <section><CardTitle title="Case studies" detail={`${readyCases.length} expanded cases meet the modeling coverage threshold.`} /><div className="auto-grid">{researchEvents.map(event => <article className="card finding" key={event.event_id}>
-      <p className="muted">{range(event.impact_start, event.impact_end)}</p><h3>{event.event}</h3>
-      <p>How did growth shift during this window across {new Set(cases.filter(c => c.event_id === event.event_id && c.status === 'ready').map(c => c.industry)).size} industries?</p>
-      <Link className="source" to={`/case-studies?${query({ ...selection, event: event.event_id, country: 'compare' })}`}>Explore case study <ArrowUpRight size={16} /></Link>
-    </article>)}</div></section>
-    <section className="card finding">
-      <CardTitle title="Research Lab" detail="Observed rank changes and exploratory model results" />
-      {(() => {
-        const before = getCase('oil_collapse', '24', 'USA')
-        const after = getCase('energy_surge_2022', '24', 'USA')
-        return before?.eligible && after?.eligible && <p>US basic metals ranked {before.rank_within_country_event} of {before.compared_industries_n} in the oil collapse ({value(before.growth_shift_pp)}) and {after.rank_within_country_event} of {after.compared_industries_n} in the energy surge ({value(after.growth_shift_pp)}).</p>
-      })()}
-      <a className="source" href="#methodology">View research methods and validation <ArrowRight size={16} /></a>
-    </section>
-    <section className="card"><CardTitle title="How resilient is your industry?" detail="Explore historical exposure to economic shocks." />
-      <div className="filter-grid"><Filters selection={selection} update={update} />
-        <Link className="button primary self-end" to={`/calculator?${query(selection)}`}>Analyze exposure <ArrowRight size={16} /></Link>
-      </div>
-    </section>
-    <Methodology />
-  </>
-}
-
-export function Insight({ selection }: { selection: Selection }) {
-  const difference = delta(selection.event, selection.industry)
-  return <aside className="card finding">
-    <CardTitle title="Observed differences" />
-    {selection.country === 'compare' && <p>{difference == null ? 'Insufficient data for a matched India–US comparison.' :
-      `India minus US impact growth shift: ${value(difference)}.`}</p>}
-    {selectedCountries(selection).map(country => {
-      const row = getCase(selection.event, selection.industry, country)
-      return <p className="insight-line" key={country}>
-        {(row?.growth_shift_pp ?? 0) >= 0 ? <ArrowUpRight size={17} /> : <ArrowDownRight size={17} />}
-        {row?.eligible ? `${countries[country]} ranked ${row.rank_within_country_event} of ${row.compared_industries_n}.${row.followup_shift_pp == null ? '' : ` Mean YoY growth shifted ${value(row.followup_shift_pp)} from impact to follow-up.`}` :
-          `${countries[country]} has insufficient window coverage.`}
-      </p>
-    })}
-  </aside>
 }
 
 export function StructuralResearch() {

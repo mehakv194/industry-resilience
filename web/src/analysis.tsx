@@ -6,13 +6,16 @@ import {
   ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from 'recharts'
 import {
-  caseIndustries, cases, countries, delta, events, getCase, industryName, period, range, timeline,
+  caseCountries, countries, events, getCase, industryName, period, range, timeline,
   value, windowNames, windows, type Case, type Event,
 } from './data'
 import {
-  CardTitle, Filters, Insight, Methodology, Metrics, Select, SourceNote, StructuralResearch, query,
+  CardTitle, Filters, Methodology, Metrics, Select, SourceNote, StructuralResearch, query,
   selectedCountries, useSelection, type Selection,
 } from './shared'
+
+import { clusterName, considerations, insight, lowBaseSource } from './insights'
+import { IndustryChanges, ShiftBars } from './overview'
 
 const colors = { IND: '#126F8B', USA: '#E97661', DEU: '#7355a2', brent: '#936217' }
 type Window = typeof windows[number] | 'all'
@@ -25,8 +28,8 @@ function TimelineCharts({ selection, event, window }: { selection: Selection; ev
   const production = data.some(row => countryList.some(country => row[country] !== null))
   return <div className="chart-grid">
     <section className="card chart-card">
-      <CardTitle title="Manufacturing growth" detail={`${industryName(selection.industry)} · Monthly YoY growth (%)`} />
-      <p className="chart-period">{range(data[0].month, data[data.length - 1].month)}</p>
+      <CardTitle title="When did growth change?" detail={`${industryName(selection.industry)} · Growth versus the same month a year earlier (%)`} />
+      <p className="chart-period">{data.length ? range(data[0].month, data[data.length - 1].month) : 'No observed months'}</p>
       {production ? <ResponsiveContainer width="100%" height={280} minWidth={0}>
         <LineChart data={data} margin={{ right: 12, left: -10, top: 8 }}>
           {window === 'all' && <ReferenceArea x1={event.impact_start} x2={event.impact_end} fill="#49BED4" fillOpacity={0.15} />}
@@ -37,7 +40,7 @@ function TimelineCharts({ selection, event, window }: { selection: Selection; ev
           <Tooltip labelFormatter={month => period(String(month))} formatter={n => value(Number(n), '%', false)} />
           <Legend />
           {countryList.map(country => <Line key={country} dataKey={country} name={countries[country]}
-            stroke={colors[country]} dot={false} strokeWidth={2.5} connectNulls={false} isAnimationActive={false} />)}
+            stroke={colors[country]} dot={data.filter(row => row[country] !== null).length <= 1} strokeWidth={2.5} connectNulls={false} isAnimationActive={false} />)}
         </LineChart>
       </ResponsiveContainer> : <p className="empty">No production observations for this period.</p>}
       {window === 'all' && <p className="muted">Shaded area shows the impact window.</p>}
@@ -48,7 +51,7 @@ function TimelineCharts({ selection, event, window }: { selection: Selection; ev
     </section>
     <section className="card chart-card">
       <CardTitle title="Brent spot price" detail="Monthly nominal USD per barrel" />
-      <p className="chart-period">{range(data[0].month, data[data.length - 1].month)}</p>
+      <p className="chart-period">{data.length ? range(data[0].month, data[data.length - 1].month) : 'No observed months'}</p>
       {data.some(row => row.brent !== null) ? <ResponsiveContainer width="100%" height={280} minWidth={0}>
         <LineChart data={data} margin={{ right: 12, left: -10, top: 8 }}>
           {window === 'all' && <ReferenceArea x1={event.impact_start} x2={event.impact_end} fill="#F5B89B" fillOpacity={0.24} />}
@@ -60,6 +63,7 @@ function TimelineCharts({ selection, event, window }: { selection: Selection; ev
           <Line dataKey="brent" name="Brent" stroke={colors.brent} dot={false} strokeWidth={2.5} isAnimationActive={false} />
         </LineChart>
       </ResponsiveContainer> : <p className="empty">Brent data is unavailable for this period.</p>}
+      <p className="muted">Brent shows what happened to oil prices over the same period.</p>
       <footer><SourceNote id="BRENT" /></footer>
     </section>
   </div>
@@ -67,42 +71,85 @@ function TimelineCharts({ selection, event, window }: { selection: Selection; ev
 
 function WindowComparison({ rows, labels }: { rows: (Case | undefined)[]; labels: string[] }) {
   const data = windows.map(w => ({
-    name: windowNames[w],
-    a: rows[0]?.[`${w}_growth_pct`] ?? null,
-    b: rows[1]?.[`${w}_growth_pct`] ?? null,
+    name: ({baseline: 'Before', impact: 'During', followup: 'After'})[w],
+    ...Object.fromEntries(rows.map((row, i) => [i.toString(), row?.[`${w}_growth_pct`] ?? null])),
   }))
   return <div className="chart-card">
-    {data.some(row => row.a !== null || row.b !== null) ? <ResponsiveContainer width="100%" height={230} minWidth={0}>
+    {rows.some(row => row?.impact_growth_pct != null) ? <ResponsiveContainer width="100%" height={230} minWidth={0}>
       <BarChart data={data} margin={{ top: 8, left: -14, right: 6 }}>
         <CartesianGrid stroke="#E6EAED" vertical={false} />
         <XAxis dataKey="name" tick={{ fontSize: 12 }} /><YAxis unit="%" tick={{ fontSize: 11 }} />
         <ReferenceLine y={0} stroke="#64717C" />
         <Tooltip formatter={n => value(Number(n), '%', false)} />
         <Legend />
-        <Bar dataKey="a" name={labels[0]} fill={rows[0] ? colors[rows[0].country] : colors.IND} isAnimationActive={false} />
-        {labels[1] && <Bar dataKey="b" name={labels[1]} fill={rows[1]?.country === rows[0]?.country ? '#64717C' :
-          rows[1] ? colors[rows[1].country] : colors.USA} isAnimationActive={false} />}
+        {labels.map((label, i) => <Bar key={i} dataKey={i.toString()} name={label}
+          fill={rows[i] && (i === 0 || rows[i]?.country !== rows[0]?.country)
+            ? colors[rows[i]!.country] : '#64717C'} isAnimationActive={false} />)}
       </BarChart>
     </ResponsiveContainer> : <p className="empty">Insufficient coverage to chart window means.</p>}
     <footer>{rows.map((row, i) => row && <SourceNote key={i} id={row.source_id} />)}</footer>
   </div>
 }
 
-function Ranking({ selection }: { selection: Selection }) {
-  return <section className="card">
-    <CardTitle title="Industry rankings" detail="Impact growth shift, highest first within each country" />
-    <div className="auto-grid">{selectedCountries(selection).map(country => {
-      const rows = cases.filter(row => row.event_id === selection.event && row.country === country)
-        .sort((a, b) => (a.rank_within_country_event ?? 99) - (b.rank_within_country_event ?? 99))
-      return <table key={country}><caption>{countries[country]} · {rows.filter(r => r.eligible).length} of {caseIndustries(selection.event).length} ranked</caption>
-        <thead><tr><th scope="col">Rank</th><th scope="col">Industry</th><th scope="col">Shift</th><th scope="col">Status</th></tr></thead>
-        <tbody>{rows.map(row => <tr className={row.industry === selection.industry ? 'selected-row' : ''} key={row.industry}>
-          <td>{row.rank_within_country_event ?? '—'}</td><th scope="row">{industryName(row.industry)}</th>
-          <td>{value(row.growth_shift_pp)}</td><td>{row.status}</td>
-        </tr>)}</tbody>
-      </table>
-    })}</div>
+function Stories({ rows, event, role }: { rows: (Case | undefined)[]; event: Event; role?: string }) {
+  return <div className="auto-grid">{rows.map(row => {
+    const story = insight(row)
+    if (!row || !story) return null
+    return <article className="card finding" key={row.country}>
+      <p className="muted">{countries[row.country]} · {industryName(row.industry)}</p>
+      <h3>{story.extreme ? 'An unusually large observation affects this comparison' : story.title}</h3>
+      {story.extreme ? <>
+        <p>{story.warning}</p>
+        <details><summary>Inspect original growth figures</summary><p>{story.beforeAfter} Change during the event: {value(row.growth_shift_pp)}.</p>
+          {row.country === 'IND' && row.industry === '29' && <a href={lowBaseSource}>MoSPI’s lockdown comparison note</a>}
+        </details>
+      </> : <>
+        <p>{story.beforeAfter || `The window contains ${row.coverage.impact} of ${row.expected.impact} impact months.`}</p>
+        {story.low && <p>{story.low}</p>}
+        {story.position && <p className="muted">{story.position}</p>}
+      </>}
+      {story.profile && <p className="muted">Similar historical profiles: {clusterName(story.profile.cluster).toLowerCase()}.</p>}
+      {!role && row.eligible && !story.extreme && <p className="muted">
+        {row.followup_shift_pp == null ? 'Use this window for a short-term production scenario. Follow-up evidence is limited.' :
+          'Use the before, during and after periods to stress-test how long a production change could last.'}
+      </p>}
+      <details><summary>Evidence and coverage</summary>
+        <p>{range(event.impact_start, event.impact_end)} · Observed months before, during and after: {story.evidence}.</p>
+        <SourceNote id={row.source_id} />
+      </details>
+      {role && <div className="business-notes"><h3>What should you watch?</h3>
+        <ul>{considerations(row, role).map(text => <li key={text}>{text}</li>)}</ul>
+      </div>}
+    </article>
+  })}</div>
+}
+
+function ChangeChart({ rows }: { rows: (Case | undefined)[] }) {
+  return <section className="card finding">
+    <CardTitle title="What moved most?" detail="Changes in annual growth, measured in percentage points." />
+    {rows.map(row => {
+      const story = insight(row)
+      return row && story && <div className="finding" key={row.country}>
+        <h3>{countries[row.country]}</h3>
+        {story.extreme ? <p>{story.warning} See the original figures above.</p> : <>
+          <ShiftBars rows={story.shifts.map(item => ({ ...item, id: item.name }))} />
+          {story.biggest && <p>{story.biggest.name} had the largest change ({value(story.biggest.shift)}).
+            {story.stable && ` Growth changed less ${story.stable.name.toLowerCase()} (${value(story.stable.shift)}).`}</p>}
+        </>}
+      </div>
+    })}
   </section>
+}
+function CountryChanges({ selection }: { selection: Selection }) {
+  return <div className="finding"><CardTitle title="How does growth compare across countries?"
+    detail="Change in the annual growth rate, in percentage points." />
+      <ShiftBars rows={caseCountries(selection.event).flatMap(country => {
+        const row = getCase(selection.event, selection.industry, country)
+        return row?.growth_shift_pp == null || insight(row)?.extreme ? [] :
+          [{ name: countries[country], id: country, shift: row.growth_shift_pp }]
+      })} />
+    <p className="muted">Cases with missing or unusually large observations can be inspected in the evidence and comparison sections.</p>
+  </div>
 }
 
 function Comparison({ selection }: { selection: Selection }) {
@@ -127,8 +174,8 @@ function Comparison({ selection }: { selection: Selection }) {
       <strong>{value(shifts[i])}</strong> impact shift
       <p className="muted">Follow-up shift {value(rows[i]?.followup_shift_pp)}</p>
     </article>)}</div>
-    <WindowComparison rows={rows} labels={['Case A', 'Case B']} />
-    <p>{difference !== null ? `Case A minus Case B impact shift: ${value(difference)}.` : comparable
+    {comparable && <WindowComparison rows={rows} labels={['Case A', 'Case B']} />}
+    <p>{difference !== null ? `Case A minus Case B change in growth: ${value(difference)}.` : comparable
       ? 'Insufficient data to calculate a difference.' : 'Keep the same industry and event, or change only industry or shock within one country, to calculate a difference.'}</p>
     {(a.event !== b.event || rows.some(row => row?.status === 'partial')) &&
       <p className="muted">The estimates use the observed months within each case’s configured windows. Check coverage and dates before interpreting the difference.</p>}
@@ -147,12 +194,20 @@ export function CaseStudies() {
         <Select label="Chart period" value={window} options={allWindows.filter(([id]) => id !== 'followup' || event.followup_start)} change={v => setWindow(v as Window)} />
       </Filters>
     </section>
-    <Metrics rows={rows} event={event} />
-    <p className="muted">{event.status} · {event.notes}</p>
+    <Stories rows={rows} event={event} />
+    <section className="card"><CardTitle title="How did growth change before, during and after?" detail="Average annual growth rate in each period." />
+      <WindowComparison rows={rows} labels={selectedCountries(selection).map(c => countries[c])} />
+    </section>
+    <ChangeChart rows={rows} />
+    <section className="card"><CountryChanges selection={selection} /></section>
+    <section className="card"><IndustryChanges selection={selection} onSelect={industry => update({ ...selection, industry })} /></section>
     {event.event_id.includes('tariff') && <p className="muted">These charts show production during the tariff window. An aligned industry-level duties and import series is unavailable. <a href="https://www.usitc.gov/applications/dataweb/about">USITC DataWeb</a></p>}
-    <TimelineCharts selection={selection} event={event} window={window} />
-    <Ranking selection={selection} />
-    <Insight selection={selection} />
+    <details className="card finding"><summary>Explore monthly production and oil prices</summary>
+      <TimelineCharts selection={selection} event={event} window={window} />
+    </details>
+    <details className="card finding"><summary>View figures and event notes</summary>
+      <p className="muted">{event.status} · {event.notes}</p><Metrics rows={rows} event={event} />
+    </details>
     <Comparison selection={selection} />
     <StructuralResearch />
     <Methodology />
@@ -167,14 +222,13 @@ export function Calculator() {
   const event = events.find(e => e.event_id === submitted.event)!
   const chosen = selectedCountries(submitted)
   const rows = chosen.map(country => getCase(submitted.event, submitted.industry, country))
-  const difference = delta(submitted.event, submitted.industry)
   return <>
     <header className="page-header"><h1>Industry Risk Calculator</h1><p>Explore exposure using historical production evidence.</p></header>
     <form className="card filter-grid" onSubmit={e => { e.preventDefault(); setSubmitted(selection) }}>
       <Filters selection={selection} update={update}>
         <Select label="Business role (context only)" value={role} options={[
           ['manufacturer', 'Manufacturer'], ['supplier', 'Supplier / vendor'],
-          ['distributor', 'Distributor'], ['researcher', 'Industry researcher'],
+          ['distributor', 'Distributor'], ['investor', 'Investor'], ['researcher', 'Industry researcher'],
         ]} change={setRole} />
       </Filters>
       <button className="button primary self-end" type="submit">Analyze exposure <ArrowRight size={16} /></button>
@@ -183,19 +237,18 @@ export function Calculator() {
     <section className="card feature" aria-live="polite">
       <p>{event.event} · {range(event.impact_start, event.impact_end)}</p>
       <h2>{industryName(submitted.industry)}</h2>
-      <div className="result-values">{rows.map((row, i) => <div key={chosen[i]}>
-        <strong className="metric-number">{value(row?.growth_shift_pp)}</strong><p>{countries[chosen[i]]} impact growth shift</p>
-      </div>)}</div>
-      <p>{difference == null ? 'Insufficient coverage for the India–US comparison.' :
-        `India minus US impact growth shift: ${value(difference)}.`}</p>
+      <p>Historical exposure describes how industry production growth behaved during this event.</p>
       <Link className="button" to={`/case-studies?${query(submitted)}`}>View supporting case study <ArrowRight size={16} /></Link>
     </section>
-    <Metrics rows={rows} event={event} />
-    <section className="card"><CardTitle title="Growth across windows" detail="Mean monthly year-over-year production growth (%)" />
+    <Stories rows={rows} event={event} role={role} />
+    <section className="card"><CardTitle title="What changed before, during and after?" detail="Average annual production growth in each period." />
       <WindowComparison rows={rows} labels={chosen.map(country => countries[country])} />
     </section>
-    <Insight selection={submitted} />
-    <p className="muted">Historical industry data describes observed growth during the selected shock. Business role provides context only. These figures do not estimate future losses or firm-level survival.</p>
+    <ChangeChart rows={rows} />
+    <section className="card finding"><CountryChanges selection={submitted} />
+      <IndustryChanges selection={submitted} />
+    </section>
+    <details className="card finding"><summary>Technical details and monthly coverage</summary><Metrics rows={rows} event={event} /></details>
     <Methodology />
   </>
 }

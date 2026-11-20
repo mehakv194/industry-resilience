@@ -104,3 +104,16 @@ td:last-child { text-transform: capitalize; }
   .main { padding: 20px 14px 36px; gap: 14px; }
   .card { padding: 13px; }
 }
+
+.shift-bars, .patterns { display: grid; gap: 8px; }
+.shift-row { display: grid; grid-template-columns: minmax(90px, 1fr) minmax(55px, 2fr) auto; gap: 10px; align-items: center; width: 100%; padding: 6px 8px; border-radius: 7px; text-align: left; font-size: .87rem; }
+button.shift-row { cursor: pointer; }
+button.shift-row:hover, .shift-row[aria-pressed="true"] { background: var(--surface); }
+.shift-track { position: relative; height: 14px; background: var(--surface); border-radius: 4px; }
+.shift-track::after { content: ""; position: absolute; inset: 0 auto 0 50%; width: 1px; background: var(--muted); }
+.shift-track i { position: absolute; top: 2px; bottom: 2px; border-radius: 3px; }
+.patterns li, .business-notes { border-top: 1px solid var(--border); padding-top: 8px; }
+.business-notes ul { list-style: disc; padding-left: 20px; margin-top: 6px; }
+.business-notes li + li { margin-top: 5px; }
+.chart-tooltip { padding: 8px 12px; font-size: .85rem; }
+details summary { cursor: pointer; width: fit-content; font-weight: 600; }
