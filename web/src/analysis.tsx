@@ -165,7 +165,7 @@ function Comparison({ selection }: { selection: Selection }) {
   const difference = comparable && shifts[0] != null && shifts[1] != null ? shifts[0] - shifts[1] : null
   const label = (s: Selection) => `${countries[selectedCountries(s)[0]]} · ${industryName(s.industry)} · ${events.find(e => e.event_id === s.event)?.event}`
   const comparisonEvents = [a, b].map(item => events.find(e => e.event_id === item.event)!)
-  return <section className="card">
+  return <section id="case-comparison" className="card">
     <CardTitle title="Compare two cases" detail="Case A follows the main filters. Choose any supported Case B." />
     <div className="filter-grid"><Filters selection={b} update={setOverride} allowCompare={false} /></div>
     <div className="auto-grid compare-pair">{[a, b].map((s, i) => <article key={i}>

@@ -1,10 +1,11 @@
-import { Activity, BookOpen, Calculator as CalculatorIcon, Database, LayoutDashboard, LineChart } from 'lucide-react'
+import { Activity, BookOpen, Calculator as CalculatorIcon, Database, LayoutDashboard, LineChart, Workflow } from 'lucide-react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import './style.css'
 import { Calculator, CaseStudies } from './analysis'
 import { Overview } from './overview'
-import './style.css'
+import { Pipeline } from './pipeline'
 
 function App() {
   const { pathname, hash } = useLocation()
@@ -26,6 +27,7 @@ function App() {
         <NavLink end to="/"><LayoutDashboard size={17} /> Overview</NavLink>
         <NavLink to="/case-studies"><LineChart size={17} /> Case studies</NavLink>
         <NavLink to="/calculator"><CalculatorIcon size={17} /> Risk calculator</NavLink>
+        <NavLink to="/pipeline"><Workflow size={17} /> Pipeline</NavLink>
       </nav>
       <nav className="research-nav" aria-label="Research">
         <a href="/#methodology"><BookOpen size={17} /> Methodology</a>
@@ -37,6 +39,7 @@ function App() {
         <Route index element={<Overview />} />
         <Route path="case-studies" element={<CaseStudies />} />
         <Route path="calculator" element={<Calculator />} />
+        <Route path="pipeline" element={<Pipeline />} />
         <Route path="*" element={<section className="card"><h1>Page unavailable</h1><NavLink to="/">Return to overview</NavLink></section>} />
       </Routes>
     </main>

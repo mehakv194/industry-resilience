@@ -57,7 +57,7 @@ function SimilarIndustries() {
   const counts = clusters.map(cluster => clusterPoints.filter(p => p.cluster === cluster).length)
   const mainCluster = clusters[counts.indexOf(Math.max(...counts))]
   const pointName = (point: typeof selected) => `${countries[point.country as keyof typeof countries]} · ${industryName(point.industry_code)}`
-  return <section className="card finding">
+  return <section id="profile-evidence" className="card finding">
     <CardTitle title="Which industries behaved similarly?" detail="Each dot is one country, industry and historical event. Select a dot to inspect its record." />
     <ResponsiveContainer width="100%" height={320} minWidth={0}>
       <ScatterChart margin={{ left: 12, bottom: 12, right: 16 }}>
@@ -105,7 +105,7 @@ export function Overview() {
       <Link className="source" to={`/case-studies?${query(selection)}`}>Open selected case study <ArrowRight size={15} /></Link>
     </section>
     <SimilarIndustries />
-    <section className="card finding">
+    <section id="slowdown-evidence" className="card finding">
       <CardTitle title="How well did the models spot slowdowns?" detail={`Accuracy on held-out country–industry groups across ${validationSample} historical cases`} />
       <ResponsiveContainer width="100%" height={200} minWidth={0}>
         <BarChart data={performance} layout="vertical" margin={{right: 12}}>
@@ -117,7 +117,7 @@ export function Overview() {
       </ResponsiveContainer>
       <p>Random Forest scored {value(performance[3].accuracy, '%', false)} versus {value(performance[0].accuracy, '%', false)} for always choosing the training fold’s most common outcome. The same shocks appeared across folds, so accuracy on a new shock remains untested.</p>
     </section>
-    <section className="card finding">
+    <section id="association-evidence" className="card finding">
       <CardTitle title="What tended to happen together?" detail={`Exploratory patterns across ${patternSample} observed cases`} />
       <ol className="patterns">{patterns.map(p => <li key={p.from + p.to}>
         <strong>{p.from} → {p.to}</strong><p>{value(p.confidence * 100, '%', false)} of cases matching the first description also matched the second.</p>
