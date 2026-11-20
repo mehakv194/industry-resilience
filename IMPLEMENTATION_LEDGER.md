@@ -58,3 +58,9 @@ Expanded the existing React filters, charts, rankings, calculator and methods wi
 Added a shared deterministic interpretation layer, an audited low-base note, and a reproducible 150-point PCA projection joined to existing K-Means assignments. The original data and model exports were preserved. The original 2022 motor-vehicle gap is inspectable in its case and omitted from headline findings. The clustering exhibit explains the 148-profile group and two singleton extremes. Overview now uses research discoveries, interactive industry bars, profile scatter, held-out accuracy, and association rules. Case Studies and Risk Calculator lead with conclusions and keep raw observations, sources and formulas in details.
 
 Checks: reproduced the original -1,195.06 pp gap and the 31.65% India baseline sensitivity without April 2021. Confirmed the coordinate export matches stored PCA loadings and explained variance. TypeScript and production build passed. Browser smoke verified role guidance, Overview model displays, Germany chemicals drill-down, and the original India outlier evidence. Vite reports a large client bundle (319 kB gzip). Live deployment was outside this pass.
+
+## Netlify production release
+
+Published the static Vite build to https://delicate-torrone-e3876f.netlify.app/ via Netlify's project upload. The build includes the expanded study by default, ten industry options and Germany. The static redirect supports direct navigation to Case Studies and Risk Calculator. The deployment is a manual upload.
+
+Verified the live homepage, the Germany chemicals deep link (-8.21 pp, Eurostat NACE C20), the original 2014 India–US motor-vehicle comparison (+6.89 pp), and an unauthenticated request to the calculator route. TypeScript/build and the three focused numerical checks passed. Original coverage remains 16 ready cases. Expanded coverage remains 200 eligible of 210.

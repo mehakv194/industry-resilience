@@ -1,5 +1,7 @@
 # IndustryResilience
 
+[Open the live IndustryResilience dashboard](https://delicate-torrone-e3876f.netlify.app/)
+
 ## India–US manufacturing during two energy-price episodes
 
 The energy comparison asks whether food, chemicals, basic metals, and motor vehicles saw different changes in monthly year-over-year (YoY) production growth in India and the United States. The download snapshot supports all 16 country–industry–event cases, with 12 observations in each baseline, impact, and follow-up window. [Coverage audit](reports/energy/coverage_audit.json) · [Case metrics](reports/energy/case-metrics.json)

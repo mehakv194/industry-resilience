@@ -19,7 +19,7 @@ export const selectedCountries = (selection: Selection): Country[] =>
 export function useSelection(defaultCountry: Selection['country']) {
   const [params, setParams] = useSearchParams()
   const country = params.get('country')
-  const event = activeEvents.find(item => item.event_id === params.get('event'))?.event_id ?? activeEvents[0].event_id
+  const event = activeEvents.find(item => item.event_id === params.get('event'))?.event_id ?? 'energy_surge_2022'
   const code = industryCode(params.get('industry') ?? '29')
   const selection: Selection = {
     country: country === 'compare' || caseCountries(event).includes(country as Country)
@@ -55,7 +55,8 @@ export function Filters({ selection, update, children, allowCompare = true }: {
             : options[0]?.industry_id ?? selection.industry,
         })
       }}>
-        {Array.from(new Set(activeEvents.map(e => e.status))).map(status => <optgroup key={status} label={status}>
+        {Array.from(new Set(activeEvents.map(e => e.status))).map(status => <optgroup key={status}
+          label={status === 'Original study' ? 'Original studies · 4 industries, 2 countries' : status}>
           {activeEvents.filter(e => e.status === status).map(e => <option key={e.event_id} value={e.event_id}>{e.event}</option>)}
         </optgroup>)}
       </select>
@@ -68,6 +69,12 @@ export function Filters({ selection, update, children, allowCompare = true }: {
       : caseCountries(selection.event).map(id => [id, countries[id]])}
       change={country => update({ ...selection, country: country as Selection['country'] })} />
     {children}
+    {isLegacy(selection.event) && <div className="col-span-full flex flex-wrap items-center gap-3">
+      <span className="muted">This original study covers four industries in India and the US.</span>
+      <button type="button" className="button" onClick={() => update({
+        ...selection, event: selection.event === 'energy_spike_2022' ? 'energy_surge_2022' : 'oil_collapse',
+      })}>Switch to 10 industries and 3 countries</button>
+    </div>}
   </>
 }
 
