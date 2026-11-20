@@ -30,3 +30,9 @@ Blocked. Local inventory and GitHub main corroborate the Python project layout. 
 ## Phase 6
 
 Updated README.md with fixed windows, units, exact source links, research precedents, vintage and comparability limits, offline reproduction and one calculated motor-vehicle result. Checked the finding against the Phase 4 export. UI citation display depends on Phase 5. Next: verify the static data handoff and record release status.
+
+## Phase 7
+
+Rebuilt all four static JSON files from the downloaded bytes and compared SHA-256 hashes. The regenerated outputs matched byte for byte. The 12-month lag, 9/12 versus 10/12 threshold, percentage-point subtraction and 16 ready / eight matched results passed. Ruff lint and format checks passed for both new modules. The existing mypy launcher cannot start because its configured Python 3.12 executable is absent.
+
+Release blocked at frontend integration: no package.json, static React production build, or linked Netlify configuration was found. Browser smoke and live deployment are pending. Next: open the existing React project and connect the four JSON outputs before building and deploying.
