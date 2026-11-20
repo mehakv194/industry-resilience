@@ -1,0 +1,5 @@
+industry_id,industry,india_nic2008,usa_naics,usa_fred_series,comparison_warning
+food,Food manufacturing,10,311,IPG311N,Industry coverage may differ
+chemicals,Chemicals,20,325,IPG325N,US chemicals includes some pharmaceuticals while India NIC20 excludes NIC21
+metals,Basic metals,24,331,IPG331N,NAICS primary metals and NIC basic metals are approximate counterparts
+autos,Motor vehicles,29,3361-3363,IPG3361T3N,NAICS motor vehicles and parts versus NIC motor vehicles trailers and semi-trailers

@@ -1,0 +1,194 @@
+[
+  {
+    "country": "IND",
+    "industry": "food",
+    "event_id": "oil_collapse_2014",
+    "coverage": {
+      "baseline": 12,
+      "impact": 12,
+      "followup": 12
+    },
+    "status": "ready",
+    "source_id": "IND_FOOD"
+  },
+  {
+    "country": "IND",
+    "industry": "food",
+    "event_id": "energy_spike_2022",
+    "coverage": {
+      "baseline": 12,
+      "impact": 12,
+      "followup": 12
+    },
+    "status": "ready",
+    "source_id": "IND_FOOD"
+  },
+  {
+    "country": "IND",
+    "industry": "chemicals",
+    "event_id": "oil_collapse_2014",
+    "coverage": {
+      "baseline": 12,
+      "impact": 12,
+      "followup": 12
+    },
+    "status": "ready",
+    "source_id": "IND_CHEMICALS"
+  },
+  {
+    "country": "IND",
+    "industry": "chemicals",
+    "event_id": "energy_spike_2022",
+    "coverage": {
+      "baseline": 12,
+      "impact": 12,
+      "followup": 12
+    },
+    "status": "ready",
+    "source_id": "IND_CHEMICALS"
+  },
+  {
+    "country": "IND",
+    "industry": "metals",
+    "event_id": "oil_collapse_2014",
+    "coverage": {
+      "baseline": 12,
+      "impact": 12,
+      "followup": 12
+    },
+    "status": "ready",
+    "source_id": "IND_METALS"
+  },
+  {
+    "country": "IND",
+    "industry": "metals",
+    "event_id": "energy_spike_2022",
+    "coverage": {
+      "baseline": 12,
+      "impact": 12,
+      "followup": 12
+    },
+    "status": "ready",
+    "source_id": "IND_METALS"
+  },
+  {
+    "country": "IND",
+    "industry": "autos",
+    "event_id": "oil_collapse_2014",
+    "coverage": {
+      "baseline": 12,
+      "impact": 12,
+      "followup": 12
+    },
+    "status": "ready",
+    "source_id": "IND_AUTOS"
+  },
+  {
+    "country": "IND",
+    "industry": "autos",
+    "event_id": "energy_spike_2022",
+    "coverage": {
+      "baseline": 12,
+      "impact": 12,
+      "followup": 12
+    },
+    "status": "ready",
+    "source_id": "IND_AUTOS"
+  },
+  {
+    "country": "USA",
+    "industry": "food",
+    "event_id": "oil_collapse_2014",
+    "coverage": {
+      "baseline": 12,
+      "impact": 12,
+      "followup": 12
+    },
+    "status": "ready",
+    "source_id": "USA_FOOD"
+  },
+  {
+    "country": "USA",
+    "industry": "food",
+    "event_id": "energy_spike_2022",
+    "coverage": {
+      "baseline": 12,
+      "impact": 12,
+      "followup": 12
+    },
+    "status": "ready",
+    "source_id": "USA_FOOD"
+  },
+  {
+    "country": "USA",
+    "industry": "chemicals",
+    "event_id": "oil_collapse_2014",
+    "coverage": {
+      "baseline": 12,
+      "impact": 12,
+      "followup": 12
+    },
+    "status": "ready",
+    "source_id": "USA_CHEMICALS"
+  },
+  {
+    "country": "USA",
+    "industry": "chemicals",
+    "event_id": "energy_spike_2022",
+    "coverage": {
+      "baseline": 12,
+      "impact": 12,
+      "followup": 12
+    },
+    "status": "ready",
+    "source_id": "USA_CHEMICALS"
+  },
+  {
+    "country": "USA",
+    "industry": "metals",
+    "event_id": "oil_collapse_2014",
+    "coverage": {
+      "baseline": 12,
+      "impact": 12,
+      "followup": 12
+    },
+    "status": "ready",
+    "source_id": "USA_METALS"
+  },
+  {
+    "country": "USA",
+    "industry": "metals",
+    "event_id": "energy_spike_2022",
+    "coverage": {
+      "baseline": 12,
+      "impact": 12,
+      "followup": 12
+    },
+    "status": "ready",
+    "source_id": "USA_METALS"
+  },
+  {
+    "country": "USA",
+    "industry": "autos",
+    "event_id": "oil_collapse_2014",
+    "coverage": {
+      "baseline": 12,
+      "impact": 12,
+      "followup": 12
+    },
+    "status": "ready",
+    "source_id": "USA_AUTOS"
+  },
+  {
+    "country": "USA",
+    "industry": "autos",
+    "event_id": "energy_spike_2022",
+    "coverage": {
+      "baseline": 12,
+      "impact": 12,
+      "followup": 12
+    },
+    "status": "ready",
+    "source_id": "USA_AUTOS"
+  }
+]
