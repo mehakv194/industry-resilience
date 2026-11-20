@@ -132,3 +132,5 @@ npm --prefix web run build
 ```
 
 Use `build_panel.py --fetch-missing` to download absent source files into `.tmp/` and rebuild from the raw files. Live source refreshes can have revised values. The committed panel and source manifest preserve the snapshot used here. Research references, hypotheses, data contracts and the methodological scope are in the [expansion docs](research_expansion/docs/).
+
+[Model Results](https://industry-resilience.netlify.app/results) shows the published research evaluation, including grouped classifier accuracy and fold scores.
