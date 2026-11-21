@@ -5,5 +5,30 @@
   "python.testing.pytestArgs": [
     "tests"
   ],
-  "jupyter.notebookFileRoot": "${workspaceFolder}"
+  "jupyter.notebookFileRoot": "${workspaceFolder}",
+  "files.exclude": {
+    "PHASE_01_PR_SUMMARY.md": true,
+    "prompts": true,
+    "docs/03_RESEARCH_REFERENCES.md": true,
+    "docs/02_SCOPE_TIMELINE_INDUSTRIES.md": true,
+    "IndustryResilience_Modeling_Expansion/docs/00_READ_FIRST.md": true,
+    "PHASE_00_PR_SUMMARY.md": true,
+    "IMPLEMENTATION_LEDGER.md": true,
+    "output/pdf/IndustryResilience-Folder-Map.pdf": true,
+    "START_HERE.md": true,
+    "docs/04_DATA_SOURCES_AND_FETCH.md": true,
+    "reports/verification": true,
+    "output/pdf/IndustryResilience-Explained.pdf": true,
+    "AGENTS.md": true,
+    ".agents": true,
+    "docs/phases/IMPLEMENTATION_ROADMAP.md": true,
+    "reports/research/INTERPRETATION_AUDIT.md": true,
+    "docs/01_PRODUCT_OUTCOMES.md": true,
+    "reports/research/REPORT.md": true,
+    "research_expansion/docs/00_READ_FIRST.md": true,
+    "IndustryResilience_Modeling_Expansion/prompts": true,
+    "docs/06_ACCEPTANCE_AND_COMPARISON.md": true,
+    "research_expansion/prompts": true,
+    "docs/05_ARCHITECTURE_MODELS_COMPUTATIONS.md": true
+  }
 }

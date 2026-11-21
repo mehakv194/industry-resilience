@@ -16,3 +16,28 @@ data/processed/*
 *.duckdb.wal
 
 .tmp/
+
+# Local prompts, AI working notes, and generated written reports
+/.agents
+/prompts
+/research_expansion/prompts
+/IndustryResilience_Modeling_Expansion/prompts
+/AGENTS.md
+/IMPLEMENTATION_LEDGER.md
+/START_HERE.md
+/PHASE_00_PR_SUMMARY.md
+/PHASE_01_PR_SUMMARY.md
+/docs/01_PRODUCT_OUTCOMES.md
+/docs/02_SCOPE_TIMELINE_INDUSTRIES.md
+/docs/03_RESEARCH_REFERENCES.md
+/docs/04_DATA_SOURCES_AND_FETCH.md
+/docs/05_ARCHITECTURE_MODELS_COMPUTATIONS.md
+/docs/06_ACCEPTANCE_AND_COMPARISON.md
+/docs/phases/IMPLEMENTATION_ROADMAP.md
+/research_expansion/docs/00_READ_FIRST.md
+/IndustryResilience_Modeling_Expansion/docs/00_READ_FIRST.md
+/reports/research/REPORT.md
+/reports/research/INTERPRETATION_AUDIT.md
+/reports/verification
+/output/pdf/IndustryResilience-Explained.pdf
+/output/pdf/IndustryResilience-Folder-Map.pdf
